@@ -1,0 +1,206 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com" />
+<meta name="copyright" content="智能社 - zhinengshe.com" />
+<meta name="description" content="智能社是一家专注于web前端开发技术的公司，目前主要提供JavaScript培训和HTML5培训两项服务，同时还推出了大量javascript基础知识教程，智能课堂为你带来全新的学习方法和快乐的学习体验。" />
+<title>智能社— http://www.zhinengshe.com</title>
+<link rel="stylesheet" href="./Css/index.css" />
+<script src="../ajax.js"></script>
+<script>
+function rnd(n,m){
+	return Math.floor(n+Math.random()*(m-n))	
+}
+window.onload=function(){
+	var oAddWish=document.getElementById('send');
+	var oLightBox=document.getElementById('send-form');	
+	var oCloseLightBox=document.getElementById('close');	
+	var oSubmitLightBox=document.getElementById('send-btn');	
+	var oUserName=document.getElementById('username');	
+	var oContent=document.getElementById('content');
+	var oMain=document.getElementById('main');
+	var zIndex=2;
+	//显示lightBox
+	oAddWish.onclick=function(){
+		oLightBox.style.display='block';
+		oLightBox.style.left=(document.documentElement.clientWidth-oLightBox.offsetWidth)/2+'px';	
+		oLightBox.style.top=(document.documentElement.clientHeight-oLightBox.offsetHeight)/2+'px';	
+	};
+	//隐藏LightBox
+	oCloseLightBox.onclick=function(){
+		oLightBox.style.display='none';	
+		oUserName.value=oContent.value='';
+	};
+	
+	//1.发表许愿
+	oSubmitLightBox.onclick=function(){
+		//接口:wish.php?act=add&username=xxx&content=xxx
+		ajax({
+			url:	'wish.php',
+			data:	{act:'add', username:oUserName.value, content:oContent.value},
+			success:function(str){
+				//ajax is over
+				//DOM	{error:1, msg:xxx, id: 心愿ID, time: 1435567718}
+				var json=eval('('+str+')');
+				if(json.error==0){
+					
+					createMsg(json.id,oUserName.value,oContent.value,json.time);
+					
+					oLightBox.style.display='none';
+					oUserName.value=oContent.value='';
+				}else{
+					alert(json.msg);	
+				}
+					
+			}
+		});
+	};
+	
+	//拖拽
+	function drag(dt,dl){
+		dt.onmousedown=function(ev){
+			var oEvt=ev||event;
+			var disX=oEvt.clientX-dl.offsetLeft;
+			var disY=oEvt.clientY-dl.offsetTop;
+			dl.style.opacity=0.5;
+			dl.style.zIndex=zIndex++;
+			document.onmousemove=function(ev){
+				var oEvt=ev||event;
+				dl.style.left=oEvt.clientX-disX+'px';
+				dl.style.top=oEvt.clientY-disY+'px';
+			};
+			document.onmouseup=function(){
+				dl.style.opacity=1;
+				document.onmousemove=document.onmouseup=null;
+			};
+			
+			return false;
+		};
+	}
+	
+	//2.封装createMsg(id,username,content,time)
+	function createMsg(id,username,content,time){
+		//整理服务器时间
+		var d=new Date();
+		d.setTime(time*1000);
+		//创建dom
+		var oDl=document.createElement('dl');
+		oDl.className='paper a'+rnd(1,6);
+		oDl.innerHTML=
+'<dt>\
+<span class="username">'+username+'</span>\
+<span class="num">'+id+'</span>\
+</dt>\
+<dd class="content">'+content+'</dd>\
+<dd class="bottom">\
+<span class="time">'+d.getHours()+':'+d.getMinutes()+'</span>\
+<a href="javascript:;" class="close"></a>\
+</dd>';
+		
+		//给删除添加事件
+		var oDel=oDl.getElementsByTagName('a')[0];
+		oDel.onclick=function(){
+			//接口	wish.php?act=delete&id=0;
+			if(confirm('确定要删除么?')){
+				ajax({
+					url:	'wish.php',
+					data:	{act:'delete', id:id},
+					success:function(str){
+						//{error:1, msg:xxx}
+						if(eval('('+str+')').error==0){
+							main.removeChild(oDl);
+							//alert(eval('('+str+')').msg);		
+						}else{
+							alert(eval('('+str+')').msg);	
+						}
+					}	
+				});		
+			}
+		};
+
+		oMain.appendChild(oDl);
+		
+		//随机oDl的位置
+		oDl.style.left=rnd(0,oMain.offsetWidth-oDl.offsetWidth)+'px';
+		oDl.style.top=rnd(0,document.documentElement.clientHeight-oDl.offsetHeight)+'px';
+		
+		//oDl拖拽
+		drag(oDl.children[0],oDl);	
+	}
+	
+	//3.获取愿望	wish.php?act=get
+	ajax({
+		url:	'wish.php',
+		data:	{act:'get'},
+		success:function(str){
+			//{error:0, msg:[{'id':1, 'username':'xxx', 'content':'xxx', time: 1435567718},{},{},{}.......]}	
+			var json=eval('('+str+')');
+			if(json.error==0){
+				//创建一堆oDl
+				for(var i=0;i<json.msg.length;i++){
+					createMsg(json.msg[i].id,json.msg[i].username,json.msg[i].content,json.msg[i].time);
+				}
+			}else{
+				alert(json.msg)	
+			}
+		}
+	});
+	
+	//4.删除心愿取createMsg里面做
+	
+};
+</script>
+</head>
+<body>
+<div id="top">
+    <span id="send"></span>
+</div>
+<div id="main">
+    <!--<dl class="paper a1">
+        <dt>
+            <span class="username">智能社</span>
+            <span class="num">No.00001</span>
+        </dt>
+        <dd class="content">欢迎来到智能社</dd>
+        <dd class="bottom">
+            <span class="time">今天08:30</span>
+            <a href="javascript:;" class="close"></a>
+        </dd>
+    </dl>-->
+</div>
+
+<div id="send-form">
+    <p class="title"><span>许下你的愿望</span><a href="javascript:;" id="close"></a></p>
+    <form action="" name="wish">
+        <p>
+            <label for="username">昵称：</label>
+            <input type="text" name="username" id="username"/>
+        </p>
+        <p>
+            <label for="content">愿望：(您还可以输入&nbsp;<span id="font-num">50</span>&nbsp;个字)</label>
+            <textarea name="content" id="content"></textarea>
+            <div id="phiz">
+                <img src="./Images/phiz/zhuakuang.gif" alt="抓狂" />
+                <img src="./Images/phiz/baobao.gif" alt="抱抱" />
+                <img src="./Images/phiz/haixiu.gif" alt="害羞" />
+                <img src="./Images/phiz/ku.gif" alt="酷" />
+                <img src="./Images/phiz/xixi.gif" alt="嘻嘻" />
+                <img src="./Images/phiz/taikaixin.gif" alt="太开心" />
+                <img src="./Images/phiz/touxiao.gif" alt="偷笑" />
+                <img src="./Images/phiz/qian.gif" alt="钱" />
+                <img src="./Images/phiz/huaxin.gif" alt="花心" />
+                <img src="./Images/phiz/jiyan.gif" alt="挤眼" />
+            </div>
+        </p>
+        <span id="send-btn"></span>
+    </form>
+</div>
+<!--[if IE 6]>
+<script type="text/javascript" src="./Js/iepng.js"></script>
+<script type="text/javascript">
+    DD_belatedPNG.fix("#send,#close,.close","background");
+</script>
+<![endif]-->
+</body>
+</html>
