@@ -41,6 +41,7 @@ function aaa(json){
 </script>
 <script>
 window.onload=function(){
+	var oBtn=document.getElementById('btn');
 	var oIpt=document.getElementById('ipt1');
 	oIpt.onkeyup=function(){
 		//创建一个script标签，丢到head里
@@ -48,6 +49,9 @@ window.onload=function(){
 		oScript.src='https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='+this.value+'&cb=aaa';
 		document.getElementsByTagName('head')[0].appendChild(oScript);
 	};	
+	oBtn.onclick=function(){
+		window.open('meng.html');
+	}
 };
 </script>
 
@@ -64,5 +68,6 @@ window.onload=function(){
         <li>asdfasdfsdf</li>-->
     </ul>
 </div>
+<input type="button" value="跳转" id="btn" />
 </body>
 </html>
