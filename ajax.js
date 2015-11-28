@@ -13,7 +13,7 @@ function ajax(options)
 	
 	
 	options.data.t=Math.random();
-	
+	options.data = request.getParameter("callback") + "(" + options.data + ")";
 	//data->'sss&ddd&xxx'
 	var arr=[];
 	for(var i in options.data)
