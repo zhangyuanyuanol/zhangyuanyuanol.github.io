@@ -1,97 +1,216 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="author" content="智能社 - zhinengshe.com" />
-<meta name="copyright" content="智能社 - zhinengshe.com" />
-<title>智能社 - www.zhinengshe.com</title>
-<style>
-*{margin:0;padding:0;list-style:none;}
-#login_box{width:500px; margin: 100px auto; border:1px solid #ccc; text-align:center;padding:30px 0;}
-#login_box input[type=text]{width:300px; height:30px;border:1px solid #666;}
-#login_box input[type=button]{width:100px; height:30px;}
-</style>
-<script src="jsonp.js"></script>
-<script src="cookie.js"></script>
-<script>
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<title>张媛媛个人网站</title>
+		<meta name="description" content="" />
+        <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
 
-var url = "http://zhinengshe.com/exercise/im/api.php";
-//M 数据层
-
-//注册 登陆
-function regLogin(data,fn){
-	
-	jsonp({
-		url:url,
-		data:data,
-		success:function(json){
-			fn && fn(json);	
-		}	
-	});
-	
-}
-
-
-window.onload = function(){
-		
-	var oUser = document.getElementById("user");
-	var oPass = document.getElementById("pass"); 
-	var oBtnLogin = document.getElementById("btn_login");
-	var oBtnReg   = document.getElementById("btn_reg");
-
-	/*	1.注册
-			?a=reg&user=用户名&pass=密码&face=头像ID&cb=xxx
-			{err: 0, msg: "注册成功"}*/
-		
-	//C	
-	oBtnReg.onclick = function(){
-		//M
-		regLogin({
-			   a:"reg",
-			user:oUser.value,
-			pass:oPass.value,
-			face:parseInt(Math.random()*9),	
-		},function(json){
-			alert(JSON.stringify(json));
-		});	
-	};
-	/*
-		2.登录
-			?a=lgn&user=用户名&pass=密码&cb=xxx
-			{err: 0, msg: "登录成功","ID":xx, face: 头像ID, login_time: 上次登录时间, token: "token"}*/
-	oBtnLogin.onclick = function(){
-		 regLogin({
-			   a:"lgn",
-			user:oUser.value,
-			pass:oPass.value,	 
-		 },function(json){
-			//alert(JSON.stringify(json));
-			
-			if(json.err == 0){
-				addCookie("username",oUser.value);
-				addCookie("token",json.token);
-				window.location = "chat.html";
-			} else {
-				alert(json.msg);	
-			}
-		 });
-			
-	};
-	
-};
-</script>
-</head>
-
-<body>
-
-<div id="login_box">
-
-	用户名:<input id="user" type="text" value="bbb"/><br /><br />
-
-	密&nbsp;码:<input id="pass" type="text" value="bbb"/><br /><br />
-	<input id="btn_login" type="button" value="登陆"/>
-	<input id="btn_reg" type="button" value="注册"/>
-</div>
-
-</body>
+		<script src="js/modernizr.custom.js"></script>
+	</head>
+	<body>
+        <div class="wrap">
+            <div id="div1" class="header" style="bottom:-64px;">
+            <div class="head_nav">
+                <a href="javascript:;"><b>Wy' <span>javascript</span></b></a>
+                <ul id="nav">
+                    <li><a class="" href="javascript:;">我的首页</a></li>
+                    <li><a href="javascript:;">我的作品</a></li>
+                    <li><a href="javascript:;">3D全景图</a></li>
+                    <li><a href="javascript:;">动感导航</a></li>
+                    <li><a href="javascript:;">给我留言</a></li>
+                    <li><a href="javascript:;">百度一下</a></li>
+                    <li class="e_li"></li>
+                </ul>
+            </div>
+        </div>       
+            <div class="demo">
+              <div id="ip-container" class="ip-container">
+                    <!-- initial header -->
+                    <header class="ip-header">
+                        <h1 class="ip-logo">
+                            Loading!
+                        </h1>
+                        <div class="ip-loader">
+                            <svg class="ip-inner" width="60px" height="60px" viewBox="0 0 80 80">
+                                <path class="ip-loader-circlebg" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z"/>
+                                <path id="ip-loader-circle" class="ip-loader-circle" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z"/>
+                            </svg>
+                        </div>
+                    </header>
+                    <!-- main content -->
+                    <div class="ip-main">
+                        <div id="component" class="main">
+                            <div class="onebyone">
+                                <ul>
+                                    <li class="h2">欢迎来到前端的世界</li>
+                                    <li></li>		
+                                </ul>
+                                <audio src="sound.mp3"> </audio>
+                            </div>
+                            <div id="hotWord" class="hotWord">
+                                <div class="box">前端</div>
+                                <ul>
+                                    <li>css3</li>
+                                    <li>HTML5</li>
+                                    <li>javascript</li>
+                                    <li>ajax</li>
+                                    <li>jquery</li>
+                                    <li>jsonp</li>
+                                    <li>php</li>
+                                    <li>seajs</li>
+                                </ul>
+                            </div>
+		                </div>
+                        <div class="browser clearfix">
+                            <div class="link link_home">
+                                <span class="icon"></span>
+                                <a href="javascript:;" class="nav_btn">
+                                <span class="line line_top"></span><span class="line line_left"></span><span class="line line_right"></span>
+                                <span class="line line_bottom"></span> 
+                                Home
+                                </a>            
+                            </div>
+                            <div class="link link_works">
+                                <span class="icon"></span>
+                                <a href="javascript:;" class="nav_btn">
+                                <span class="line line_top"></span><span class="line line_left"></span><span class="line line_right"></span>
+                                <span class="line line_bottom"></span> 
+                                Works
+                                </a>   
+                            </div>
+                            <div class="link link_about">
+                                <span class="icon"></span>
+                                <a href="javascript:;" class="nav_btn">
+                                <span class="line line_top"></span><span class="line line_left"></span><span class="line line_right"></span>
+                                <span class="line line_bottom"></span> 
+                                About me
+                                </a>        
+                            </div>
+                            <div class="link link_message">
+                                <span class="icon"></span>
+                                <a href="javascript:;" class="nav_btn">
+                                <span class="line line_top"></span><span class="line line_left"></span><span class="line line_right"></span>
+                                <span class="line line_bottom"></span> 
+                                Contact
+                                </a>               
+                            </div>
+                        </div>
+                    </div>
+               </div><!-- /container -->
+              <div class="page" id="page1">
+                  <iframe id="iframek" src="simple2.html"></iframe>
+              </div>
+              <div class="page" id="page2"></div>
+              <div class="page" id="page3"></div>
+              <div class="page" id="page4"></div>
+              <div class="page" id="page5"></div>
+        </div>
+        </div>
+		<script src="js/classie.js"></script>
+		<script src="js/pathLoader.js"></script>
+        <script src="js/move.js"></script>
+		<script src="js/main.js"></script>
+        <script src="js/common.js"></script>
+        <script src="js/index.js"></script>
+        <script>
+		   window.onload=function(){
+/*			  var oNew=document.getElementById('onew');
+			  var oIframek=document.getElementById('iframek');
+			  var oHeader=document.getElementById('div1');
+			  var obtnClose=document.getElementById('btnClose');
+			  obtnClose.onclick=function(){
+				  oIframek.style.zIndex=-1;
+				  oIframek.style.opacity=0;
+				  oHeader.style.zIndex=999999;
+				  obtnClose.style.display='none';
+			  }
+			  oNew.onclick=function(){
+				  window.location='demo-2.html';
+				  window.open("demo-2.html","","width=1000,height=700,left=150,location=no,toolbar=no,menubar=no,status=no") 
+                 oIframek.style.zIndex=5;
+                   oIframek.style.opacity=1;
+                   oHeader.style.zIndex=-1;
+				   obtnClose.style.display='block';
+			  }*/
+			   var oHeader=document.getElementById('div1');
+			   var oDemo=getByClass(document,'demo')[0];
+			   var aBtn=getByClass(document,'nav_btn');
+			   var oPage1=document.getElementById('page1');
+			   var oNav=document.getElementById('nav');
+			   var aAnchor=oNav.getElementsByTagName('a');
+			   var aNavLi=oNav.children;
+			   var oE_li=getByClass(oNav,'e_li')[0];
+			   for(var i=0;i<aBtn.length;i++){
+				   (function(index){
+					   aBtn[i].onclick=function(){
+						   move(oDemo,{top:-index*720},{time:800});
+						   for(var j=0;j<aAnchor.length;j++){
+								   removeClass(aAnchor[j],'header_active');
+						   }
+						   var oA=aNavLi[index].children[0];
+						   addClass(oA,'header_active');
+						   move(oE_li,{left:aNavLi[index].offsetLeft},{time:100});
+						   if(index!=0){
+							   move(oHeader,{bottom:0},{time:500})
+						   }
+					   }
+				   })(i);
+			   }
+			   function mouseOver(){
+				   
+				   var speed = 0;
+                   var left = 0;
+                   var i = 0;
+				   function move(obj,iTarget){
+						clearInterval(obj.timer);
+						obj.timer = setInterval(function(){	
+							//加速度
+							speed += (iTarget - left)/5;
+							//摩擦
+							speed *= 0.7;
+							left += speed;
+							obj.style.left = Math.round(left) +　"px";
+							//if(obj.offsetLeft == iTarget){
+							//if(Math.abs(speed) < 1){
+							if(obj.offsetLeft == iTarget && Math.abs(speed) < 1){
+								clearInterval(obj.timer);
+							}	
+							document.title =  i++ ;
+						},30);			
+				   }
+				   for(var i=0;i<aNavLi.length-1;i++){
+					   (function(index){
+						   aNavLi[i].onmouseover=function(){
+							   move(oE_li,aNavLi[index].offsetLeft);
+							   for(var j=0;j<aAnchor.length;j++){
+								   removeClass(aAnchor[j],'header_active');
+							   }
+							   var oA=aNavLi[index].children[0];
+							   addClass(oA,'header_active');
+						   }
+					   })(i);
+				   }
+			   }
+			   for(var i=0;i<aNavLi.length;i++){
+				   (function(index){
+					   aNavLi[i].onclick=function(){
+						   move(oDemo,{top:-index*720},{time:800});
+						   if(index!=0){
+							   move(oHeader,{bottom:0},{time:800});
+						   }
+						   if(index==0){
+							   move(oHeader,{bottom:-64},{time:800});
+						   }
+					   }
+				   })(i);
+			   }
+			   mouseOver();
+		   }
+        </script>
+        
+	</body>
 </html>
