@@ -103,14 +103,14 @@ function extend( a, b ) {
 		this.gridItems.forEach( function( item, idx ) {
 			item.addEventListener( 'click', function() {
 				self._showContent( idx );
-				window.parent.document.getElementById('div1').style.display='none';
+				//window.parent.document.getElementById('div1').style.display='none';
 			} );
 		} );
 
 		// close the content element
 		this.close.addEventListener( 'click', function() {
 			self._hideContent();
-			window.parent.document.getElementById('div1').style.display='block';
+			//window.parent.document.getElementById('div1').style.display='block';
 		} );
 
 		if( this.support ) {
