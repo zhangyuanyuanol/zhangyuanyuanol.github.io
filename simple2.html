@@ -10,9 +10,12 @@
 		<link rel="stylesheet" type="text/css" href="css/demo-3.css" />
 		<style>
 			.grid-wrap {
-				max-width: 990px;
+				max-width: 1090px;
 			}
-			.grid figure,
+			.grid figure{
+				width: 150px;
+				height: 150px;
+			}
 			.grid .placeholder {
 				width: 150px;
 				height: 150px;
@@ -27,11 +30,12 @@
 		<div class="container">
 			<section class="grid3d horizontal" id="grid3d">
 				<div class="grid-wrap">
-					<div class="grid">
-						<figure id="first"><img src="img/1.jpg" /><span>JS</span></figure>
-						<figure id="second"><img src="img/2.jpg" /><span>CSS</span></figure>
-						<figure id="third"><img src="img/3.jpg" /><span>C3</span></figure>
-						<figure id="four"><img src="img/4.jpg" /><span>HTML5</span></figure>
+					<div class="grid" id="skillControll">
+
+                                <figure id="first"><img src="img/1.jpg" /><span></span></figure>
+                                <figure id="second"><img src="img/2.jpg" /><span></span></figure>
+                                <figure id="third"><img src="img/3.jpg" /><span></span></figure>
+                                <figure id="four"><img src="img/4.jpg" /><span></span></figure>
 					</div>
 				</div><!-- /grid-wrap -->
 				<div class="content">
@@ -71,10 +75,13 @@
         <script src="js/classie.js"></script>
         <script src="js/cookie.js"></script>
 		<script src="js/grid3d.js"></script>
+        <script src="js/moveItem.js"></script>
 		<script>
 			new grid3D( document.getElementById( 'grid3d' ) );
-	
+		    moveItem();
+	        
 			window.onload=function(){
+				
                 var oIcon1=document.getElementById('icon1');
 				var oGrid=document.getElementsByClassName('grid')[0];
 				var oAmul=document.getElementById('amul');
@@ -90,14 +97,7 @@
 				oConclose.onclick=function(){
 						oDetail.style.transform = "translateZ(900px) rotateY(-50deg)";
 						oDetail.style.opacity=0;
-				}
-				oGrid.onclick=function(){
-						parent.window.parHide();
-				}
-				oIcon1.onclick=function(){
-					   parent.window.parShow();
-				}
-				
+				}	
 			}
 		</script>
 	</body>

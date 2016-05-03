@@ -10,12 +10,13 @@
 	color: #fff;
 	font-size: 100%;
 	line-height: 1.25;
-	height:654px;
+	height:720px;
 	font-family: 'Lato', Arial, sans-serif;
+	overflow-y:hidden;
 }
 
 .demo-2 .container {
-	overflow: hidden;
+	height:720px;
 }
 
 .demo-2 a {
@@ -29,9 +30,10 @@
 }
 
 .demo-2 section {
-	padding: 0em 3% 4em;
+	padding: 0em 3% 0em;
 	text-align: center;
 	font-size: 1.5em;
+	overflow:hidden;
 }
 
 
@@ -79,26 +81,34 @@
 	overflow: hidden;
 }
 .itemList{
-	    position:relative;
-	    perspective: 800px;
+	    -webkit-perspective: 800px;
+		-moz-perspective: 800px;
 		transform-style: preserve-3d;
+		    -webkit-transform: rotateX(0deg) rotateZ(0deg);
+			-moz-transform: rotateX(0deg) rotateZ(0deg);
+    transition: 0.3s all ease;
+    transform-origin: center center;
+
+    width: 10px;
+    height: 10px;
+    left: 0%;
+
 }
 .grid-wrap {
-	margin: 50px auto 0;
-	max-width: 1090px;
-	width: 100%;
+	margin:0 auto;
+	width: 1090px;
 	padding: 0;
 	-webkit-perspective: 1500px;
 	-moz-perspective: 1500px;
 	perspective: 1500px;
+	height:720px;
 }
 
 .grid {
-	position: relative;
-	width:470px;
-	height:470px;
+	position:relative;
+	width:1070px;
+	height:720px;
 	margin:0 auto;
-	margin-top:10px;
 	-webkit-transition: all 0.5s cubic-bezier(0,0,0.25,1);
 	-moz-transition: all 0.5s cubic-bezier(0,0,0.25,1);
 	transition: all 0.5s cubic-bezier(0,0,0.25,1);
@@ -106,7 +116,6 @@
 	-moz-transform-style: preserve-3d;
 	transform-style: preserve-3d;
 }
-
 .view-full .grid {
 	-webkit-transform: translateZ(-1500px);
 	-moz-transform: translateZ(-1500px);
@@ -117,18 +126,19 @@
 .grid .placeholder {
 	width: 150px;
 	height: 150px;
-	border-radius:5px;
-	transform:rotate(45deg);
+	border-radius:50%;
+    -webkit-transform-origin:50% 50%;
+		-moz-transform-origin:50% 50%;
+	transform-origin:50% 50%;
 }
-figure#first{position:absolute;left:150px;top:20px;}
-figure#second{position:absolute;left:20px;top:150px;}
-figure#third{position:absolute;left:280px;top:150px;}
-figure#four{position:absolute;left:150px;top:280px;}
+.grid figure{transform:rotate(45deg);}
+.grid .placeholder {
+	    transform:rotate(45deg);
+		transition:0.5s all ease;
+}
 .grid figure {
-	margin: 5px;
-	border:1px solid #ccc;
-	border-radius:5px;
-	transform: rotate(45deg);
+	margin:0;
+	border-radius:50%;
 	display: inline-block;
 	cursor: pointer;
 	-webkit-touch-callout: none;
@@ -137,12 +147,15 @@ figure#four{position:absolute;left:150px;top:280px;}
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-}
 
+}
+.grid #first{position:absolute;left:0;top:200px;}
+.grid #second{position:absolute;left:280px;top:160px;}
+.grid #third{position:absolute;left:600px;top:260px;}
+.grid #four{position:absolute;left:850px;top:220px;}
 .grid figure.active {
 	opacity: 0;
 }
-
 .grid .placeholder {
 	pointer-events: none;
 	position: absolute;
@@ -198,25 +211,40 @@ figure#four{position:absolute;left:150px;top:280px;}
 	display: block;
 	width: 150px;
 	height:150px;
-	border-radius:5px;
     text-align: center;
     line-height: 150px;
     font-size: 28px;
+		border-radius:50%;
+	transition:1s all ease;
+    -webkit-transform-origin:50% 50%;
+		-moz-transform-origin:50% 50%;
+	transform-origin:50% 50%;
+	outline:none;
+	transform:rotate(-45deg);
 }
+
 .grid figure span{
 	display: block;
 	width: 150px;
 	height:150px;
 	position:absolute;
-	top:4px;
-	left:10px;
+	top:0;
+	left:0;
 	color:#F6C;
-	border-radius:5px;
+	border-radius:50%;
     text-align: center;
     line-height: 150px;
     font-size: 28px;
+		transition:0.5s all ease;
+    -webkit-transform-origin:50% 50%;
+			-moz-transform-origin:50% 50%;
+	transform-origin:50% 50%;
 	transform:rotate(-45deg);
+	
 }
+<!--.grid figure:hover span{transform:rotate(-45deg);}
+-->
+
 
 .content{
 	position: fixed;
@@ -236,7 +264,6 @@ figure#four{position:absolute;left:150px;top:280px;}
 }*/
 
 .content {
-	overflow-y: scroll;
 	height: 0; /* What seems to be the problem, officer? Well, we have a second scroll bar in Chrome! */
 	background: #fff;
 	visibility: hidden;
@@ -287,6 +314,7 @@ figure#four{position:absolute;left:150px;top:280px;}
 	-webkit-transition: opacity 0.6s;
 	-moz-transition: opacity 0.6s;
 	transition: opacity 0.6s;
+	overflow-y:no-scroll;
 }
 
 .icon1{
@@ -433,7 +461,8 @@ p.dummy-text:nth-child(3) {
     position: absolute;
     top:60px;
     background:white;
-    transform: translateZ(900px) rotateY(-50deg);
+    -webkit-transform:translateZ(900px) rotateY(-50deg);
+	-moz-transform:translateZ(900px) rotateY(-50deg);
     transition: 1s all ease;
     opacity: 1;
     transform-origin: center center;
