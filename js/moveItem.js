@@ -20,7 +20,7 @@ function moveItem(){
 		            if(aSpan[index].contains(fromObj)){//里面不算
 			             return;	
 		            }      
-			        aSpan[index].style.transition = "1s all ease";
+//			        aSpan[index].style.transition = "1s all ease";
 //			        aSpan[index].style.transform="rotate(45deg)";
 	                oImag.style.transition = "1s all ease";
 					oImag.style.transform="rotate(0deg)";
@@ -33,21 +33,19 @@ function moveItem(){
 						oIcon1.onclick=function(){
 									parent.window.parShow();
 			//					    aSpan[index].style.transform="rotate(45deg)";
+			                        oImag.style.transition = "0.5s all ease";
 									oImag.style.transform="rotate(0deg)";
 									oImag.style.borderRadius="0%";
 									aSpan[index].style.borderRadius="0%";
 									var timer2=setTimeout(function(){
 									  
-										 	aSpan[index].style.transition = "1s all ease";
+//										 	aSpan[index].style.transition = "1s all ease";
 			//						        aSpan[index].style.transform="rotate(0deg)"; 
-			
+			                                aSpan[index].style.borderRadius="50%";
 											oImag.style.transition = "1s all ease";
-											
-											
-											aSpan[index].style.borderRadius="50%";
+											oImag.style.transform="rotate(-405deg)";
 											oImag.style.borderRadius="50%";
-											oImag.style.transform="rotate(-45deg)";
-									 },1000);
+									 },1500);
 			//					   
 			//					   var timer3=setTimeout(function(){
 			//							   aSpan[index].timer1 = setInterval(function(){
@@ -68,16 +66,14 @@ function moveItem(){
 		            if(aSpan[index].contains(toObj)){
 			               return;	
 		            }
-				   aSpan[index].style.transition = "1s all ease";
+//				   aSpan[index].style.transition = "1s all ease";
 //				   aSpan[index].style.transform="rotate(0deg)";
 				   oImag.style.transition = "1s all ease";
-				   
-				   
-				   aSpan[index].style.borderRadius="50%";
+				   oImag.style.transform="rotate(-405deg)";
 				   oImag.style.borderRadius="50%";
-				   oImag.style.transform="rotate(-45deg)";
+				   aSpan[index].style.borderRadius="50%";
 				   aSpan[index].timer1 = setInterval(function(){
-					      move(aSpan[index], {left:(aPos[index][0]+rnd(-150,120)),top:(aPos[index][1]+rnd(-120,220))}, {duration:2500                          ,easing:'linear'});
+					      move(aSpan[index], {left:(aPos[index][0]+rnd(-150,120)),top:(aPos[index][1]+rnd(-120,220))}, {duration:2500,                          easing:'linear'});
 			       },2500);
 		   };
 

@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+#box{ width:450px; height:450px; border:1px solid #399; border-radius:50%; position:absolute; left:450px; top:100px;}
+#box span{ width:120px; height:120px; position:absolute; left:50%; margin-left:-60px; top:0; border-radius:50%; margin-top:-60px; overflow: hidden; box-shadow: -2px 0px 1px 0px #399,0px -2px 1px 0px #399,2px 0px 1px 0px #399,0px 2px 1px 0px #399;}
+#box span img{width: 120px; height: 120px;}
+#disc{font-family: '微软雅黑'; font-size: 20px;}
+</style>
+<script>
+function deg(n){
+	return n*Math.PI/180;
+}
+window.onload=function(){
+	var oDiv=document.getElementById("box");
+	var r=oDiv.offsetWidth/2;
+	var count=10;
+	var open=false;
+	for(var i=0;i<count;i++){
+		var oSpan=document.createElement("span");
+		oSpan.innerHTML="<img src=img/img7/"+(i+1)+".jpg />";
+		oDiv.appendChild(oSpan);
+		setPos(oSpan,0);//i*90/(count-1)
+		oSpan.rotate=0;
+	}
+	var oBox=document.getElementsByTagName("span");
+	oDiv.onclick=function(){
+		if(open){
+			for(var i=0;i<oBox.length;i++){
+				move(oBox[i],0);
+			}
+			open=false;
+		}else{
+			for(var i=0;i<oBox.length;i++){
+				move(oBox[i],i*360/count);
+			}
+			open=true;
+		}
+	};
+	
+	function move(obj,iTarget){
+		var start=obj.rotate;
+		var dis=iTarget-start;
+		var time=500;
+		var count=Math.round(time/30);
+		var n=0;
+		clearInterval(obj.timer);
+		obj.timer=setInterval(function(){
+			n++;
+			var cur=start+dis/count*n;
+			setPos(obj,cur);
+			obj.rotate=cur;
+			if(n==count){
+				clearInterval(obj.timer);
+			}
+		},30);
+	}
+	function setPos(obj,n){
+		var x=Math.sin(deg(n))*r;
+		var y=Math.cos(deg(n))*r;
+		obj.style.left=x+r+'px';
+		obj.style.top=r-y+'px';
+	}
+};
+</script>
+</head>
+<body>
+<p id="disc">点击圆展开图片列表，再次点击收缩图片列表。</p>
+<div id="box">
+</div>
+</body>
+</html>

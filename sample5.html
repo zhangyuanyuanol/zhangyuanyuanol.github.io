@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{margin: 0;padding: 0;list-style: none;}
+ul{width: 360px;height: 360px;margin:100px auto; }
+li{width: 98px;height: 98px ;margin: 10px;float: left;background: #000;border-radius: 10px}
+#btn{width: 360px;height: 50px;border-radius: 20px;text-align: center;line-height: 50px;position: absolute;left: 50%;margin-left: -180px;top: 10px;background:#029df9;z-index: 10;color:white}
+</style>
+<script type="text/javascript" src= "js/move.js"></script>
+<script type="text/javascript">
+window.onload=function(){
+	var oBtn = document.getElementById('btn');
+	var oUl = document.getElementsByTagName('ul')[0];
+	var aLi = document.getElementsByTagName('li');
+	var x = oBtn.offsetLeft + 160;
+	var y = oBtn.offsetTop ;
+	var aPos = [];
+	var timer = null;
+	var New = true;
+
+	oBtn.onclick=function(){
+
+		if(New){
+			New = false;
+			var i=0;
+			timer = setInterval(function(){
+				(function(index){
+					move(aLi[index],{'width':0,'height':0,'opacity':0,'left':x,'top':y},{'duration':800,'fn':function(){
+					if( index == aLi.length-1){
+							for(var i=0;i<aLi.length;i++){
+								aLi[i].style.background = "rgb("+parseInt(Math.random()*256)+","+parseInt(Math.random()*256)+","+parseInt(Math.random()*256)+")"
+							}
+							var i = aLi.length -1;
+							timer = setInterval (function(){
+								move(aLi[i],{'width':98,'height':98,'left':aPos[i].left,"top":aPos[i].top,'opacity':1});
+								i--;
+								if( i == -1){
+									clearInterval(timer);
+									New = true;
+								}
+							},200)
+						}
+					}});
+				})(i)
+				i++;
+				if(i == aLi.length){
+					clearInterval(timer);
+				}
+			},200)}else{};
+}
+	for(var i=0;i<aLi.length;i++){
+		var l = aLi[i].offsetLeft;
+		var t = aLi[i].offsetTop;
+		aPos.push({'left':l,'top':t})
+	}
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].style.left = aPos[i].left + "px";
+		aLi[i].style.top = aPos[i].top + "px";
+		aLi[i].style.position = 'absolute';
+		aLi[i].style.margin = 0;
+	}
+}
+</script>
+</head>
+
+
+<body>
+<div id="btn">点我让生活多彩>_<</div>
+<ul>	
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+</body>
+</html>
