@@ -1,84 +1,230 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>无标题文档</title>
-<style>
-*{margin: 0;padding: 0;list-style: none;}
-ul{width: 360px;height: 360px;margin:100px auto; }
-li{width: 98px;height: 98px ;margin: 10px;float: left;background: #000;border-radius: 10px}
-#btn{width: 360px;height: 50px;border-radius: 20px;text-align: center;line-height: 50px;position: absolute;left: 50%;margin-left: -180px;top: 10px;background:#029df9;z-index: 10;color:white}
-</style>
-<script type="text/javascript" src= "js/move.js"></script>
-<script type="text/javascript">
-window.onload=function(){
-	var oBtn = document.getElementById('btn');
-	var oUl = document.getElementsByTagName('ul')[0];
-	var aLi = document.getElementsByTagName('li');
-	var x = oBtn.offsetLeft + 160;
-	var y = oBtn.offsetTop ;
-	var aPos = [];
-	var timer = null;
-	var New = true;
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<title>张媛媛个人网站</title>
+		<meta name="description" content="" />
+        <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
 
-	oBtn.onclick=function(){
+		<script src="js/modernizr.custom.js"></script>
+        <script>
 
-		if(New){
-			New = false;
-			var i=0;
-			timer = setInterval(function(){
-				(function(index){
-					move(aLi[index],{'width':0,'height':0,'opacity':0,'left':x,'top':y},{'duration':800,'fn':function(){
-					if( index == aLi.length-1){
-							for(var i=0;i<aLi.length;i++){
-								aLi[i].style.background = "rgb("+parseInt(Math.random()*256)+","+parseInt(Math.random()*256)+","+parseInt(Math.random()*256)+")"
-							}
-							var i = aLi.length -1;
-							timer = setInterval (function(){
-								move(aLi[i],{'width':98,'height':98,'left':aPos[i].left,"top":aPos[i].top,'opacity':1});
-								i--;
-								if( i == -1){
-									clearInterval(timer);
-									New = true;
-								}
-							},200)
-						}
-					}});
-				})(i)
-				i++;
-				if(i == aLi.length){
-					clearInterval(timer);
-				}
-			},200)}else{};
-}
-	for(var i=0;i<aLi.length;i++){
-		var l = aLi[i].offsetLeft;
-		var t = aLi[i].offsetTop;
-		aPos.push({'left':l,'top':t})
-	}
-	for(var i=0;i<aLi.length;i++){
-		aLi[i].style.left = aPos[i].left + "px";
-		aLi[i].style.top = aPos[i].top + "px";
-		aLi[i].style.position = 'absolute';
-		aLi[i].style.margin = 0;
-	}
-}
-</script>
-</head>
-
-
-<body>
-<div id="btn">点我让生活多彩>_<</div>
-<ul>	
-	<li></li>
-	<li></li>
-	<li></li>
-	<li></li>
-	<li></li>
-	<li></li>
-	<li></li>
-	<li></li>
-	<li></li>
-</ul>
-</body>
+		</script>
+	</head>
+	<body>
+        <div class="wrap">
+            <div id="div1" class="header" style="bottom:-64px;">
+            <div class="head_nav">
+                <a href="javascript:;"><b>Wy' <span>javascript</span></b></a>
+                <ul id="nav">
+                    <li><a class="" href="javascript:;">我的首页</a></li>
+                    <li><a href="javascript:;">我的作品</a></li>
+                    <li><a href="javascript:;">3D全景图</a></li>
+                    <li><a href="javascript:;">动感导航</a></li>
+                    <li><a href="javascript:;">给我留言</a></li>
+                    <li><a href="javascript:;">百度一下</a></li>
+                    <li class="e_li"></li>
+                </ul>
+            </div>
+        </div>       
+            <div class="demo">
+              <div id="ip-container" class="ip-container">
+                    <!-- initial header -->
+                    <header class="ip-header">
+                        <h1 class="ip-logo">
+                            Loading!
+                        </h1>
+                        <div class="ip-loader">
+                            <svg class="ip-inner" width="60px" height="60px" viewBox="0 0 80 80">
+                                <path class="ip-loader-circlebg" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z"/>
+                                <path id="ip-loader-circle" class="ip-loader-circle" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z"/>
+                            </svg>
+                        </div>
+                    </header>
+                    <!-- main content -->
+                    <div class="ip-main">
+                        <div id="component" class="main">
+                            <div class="onebyone">
+                                <ul>
+                                    <li class="h2">欢迎来到前端的世界</li>
+                                    <li></li>		
+                                </ul>
+                                <audio src="sound.mp3"> </audio>
+                            </div>
+                            <div id="hotWord" class="hotWord">
+                                <div class="box">前端</div>
+                                <ul>
+                                    <li>css3</li>
+                                    <li>HTML5</li>
+                                    <li>javascript</li>
+                                    <li>ajax</li>
+                                    <li>jquery</li>
+                                    <li>jsonp</li>
+                                    <li>php</li>
+                                    <li>seajs</li>
+                                </ul>
+                            </div>
+		                </div>
+                        <div class="browser clearfix">
+                            <div class="link link_home">
+                                <span class="icon"></span>
+                                <a href="javascript:;" class="nav_btn">
+                                <span class="line line_top"></span><span class="line line_left"></span><span class="line line_right"></span>
+                                <span class="line line_bottom"></span> 
+                                Home
+                                </a>            
+                            </div>
+                            <div class="link link_works">
+                                <span class="icon"></span>
+                                <a href="javascript:;" class="nav_btn">
+                                <span class="line line_top"></span><span class="line line_left"></span><span class="line line_right"></span>
+                                <span class="line line_bottom"></span> 
+                                Works
+                                </a>   
+                            </div>
+                            <div class="link link_about">
+                                <span class="icon"></span>
+                                <a href="javascript:;" class="nav_btn">
+                                <span class="line line_top"></span><span class="line line_left"></span><span class="line line_right"></span>
+                                <span class="line line_bottom"></span> 
+                                About me
+                                </a>        
+                            </div>
+                            <div class="link link_message">
+                                <span class="icon"></span>
+                                <a href="javascript:;" class="nav_btn">
+                                <span class="line line_top"></span><span class="line line_left"></span><span class="line line_right"></span>
+                                <span class="line line_bottom"></span> 
+                                Contact
+                                </a>               
+                            </div>
+                        </div>
+                    </div>
+               </div><!-- /container -->
+              <div class="page" id="page1">
+                  <iframe id="iframek" src="simple2.html"></iframe>
+              </div>
+              <div class="page" id="page2"></div>
+              <div class="page" id="page3"></div>
+              <div class="page" id="page4"></div>
+              <div class="page" id="page5"></div>
+        </div>
+        </div>
+		<script src="js/classie.js"></script>
+		<script src="js/pathLoader.js"></script>
+        <script src="js/move.js"></script>
+		<script src="js/main.js"></script>
+        <script src="js/common.js"></script>
+        <script src="js/index.js"></script>
+        <script src="js/cookie.js"></script>
+        <script>
+		       var oHeader=document.getElementById('div1');
+			   function parHide(){
+				    oHeader.style.display='none';
+			   }
+			   function parShow(){
+				    oHeader.style.display='block';
+			   }
+        </script>
+        <script>
+		   window.onload=function(){
+/*			  var oNew=document.getElementById('onew');
+			  var oIframek=document.getElementById('iframek');
+			  var oHeader=document.getElementById('div1');
+			  var obtnClose=document.getElementById('btnClose');
+			  obtnClose.onclick=function(){
+				  oIframek.style.zIndex=-1;
+				  oIframek.style.opacity=0;
+				  oHeader.style.zIndex=999999;
+				  obtnClose.style.display='none';
+			  }
+			  oNew.onclick=function(){
+				  window.location='demo-2.html';
+				  window.open("demo-2.html","","width=1000,height=700,left=150,location=no,toolbar=no,menubar=no,status=no") 
+                 oIframek.style.zIndex=5;
+                   oIframek.style.opacity=1;
+                   oHeader.style.zIndex=-1;
+				   obtnClose.style.display='block';
+			  }*/
+            
+			   var oHeader=document.getElementById('div1');
+			   var oDemo=getByClass(document,'demo')[0];
+			   var aBtn=getByClass(document,'nav_btn');
+			   var oPage1=document.getElementById('page1');
+			   var oNav=document.getElementById('nav');
+			   var aAnchor=oNav.getElementsByTagName('a');
+			   var aNavLi=oNav.children;
+			   var oE_li=getByClass(oNav,'e_li')[0];
+			   for(var i=0;i<aBtn.length;i++){
+				   (function(index){
+					   aBtn[i].onclick=function(){
+						   move(oDemo,{top:-index*720},{time:800});
+						   for(var j=0;j<aAnchor.length;j++){
+								   removeClass(aAnchor[j],'header_active');
+						   }
+						   var oA=aNavLi[index].children[0];
+						   addClass(oA,'header_active');
+						   move(oE_li,{left:aNavLi[index].offsetLeft},{time:100});
+						   if(index!=0){
+							   move(oHeader,{bottom:0},{time:500})
+						   }
+					   }
+				   })(i);
+			   }
+			   function mouseOver(){
+				   
+				   var speed = 0;
+                   var left = 0;
+                   var i = 0;
+				   function move(obj,iTarget){
+						clearInterval(obj.timer);
+						obj.timer = setInterval(function(){	
+							//加速度
+							speed += (iTarget - left)/5;
+							//摩擦
+							speed *= 0.7;
+							left += speed;
+							obj.style.left = Math.round(left) +　"px";
+							//if(obj.offsetLeft == iTarget){
+							//if(Math.abs(speed) < 1){
+							if(obj.offsetLeft == iTarget && Math.abs(speed) < 1){
+								clearInterval(obj.timer);
+							}	
+							document.title =  i++ ;
+						},30);			
+				   }
+				   for(var i=0;i<aNavLi.length-1;i++){
+					   (function(index){
+						   aNavLi[i].onmouseover=function(){
+							   move(oE_li,aNavLi[index].offsetLeft);
+							   for(var j=0;j<aAnchor.length;j++){
+								   removeClass(aAnchor[j],'header_active');
+							   }
+							   var oA=aNavLi[index].children[0];
+							   addClass(oA,'header_active');
+						   }
+					   })(i);
+				   }
+			   }
+			   for(var i=0;i<aNavLi.length;i++){
+				   (function(index){
+					   aNavLi[i].onclick=function(){
+						   move(oDemo,{top:-index*720},{time:800});
+						   if(index!=0){
+							   move(oHeader,{bottom:0},{time:800});
+						   }
+						   if(index==0){
+							   move(oHeader,{bottom:-64},{time:800});
+						   }
+					   }
+				   })(i);
+			   }
+			   mouseOver();
+		   }
+        </script>
+        
+	</body>
 </html>

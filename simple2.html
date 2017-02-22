@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-cn" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<title>3D Grid Effect | Demo 2</title>
+		<meta name="keywords" content="3d, grid, effect, flip, css transform, perspective, web design" />
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo-3.css" />
+		<style>
+			.grid-wrap {
+				max-width: 990px;
+			}
+			.grid figure,
+			.grid .placeholder {
+				width: 150px;
+				height: 150px;
+				border-radius:5px;
+			}
+		</style>
+		<script src="js/mod.js"></script>
+	</head>
+	<body>
+    <div class="demo-2">
+        
+		<div class="container">
+			<section class="grid3d horizontal" id="grid3d">
+				<div class="grid-wrap">
+					<div class="grid">
+						<figure id="first"><img src="img/1.jpg" /><span>JS</span></figure>
+						<figure id="second"><img src="img/2.jpg" /><span>CSS</span></figure>
+						<figure id="third"><img src="img/3.jpg" /><span>C3</span></figure>
+						<figure id="four"><img src="img/4.jpg" /><span>HTML5</span></figure>
+					</div>
+				</div><!-- /grid-wrap -->
+				<div class="content">
+					<div class="itemList">
+						<p class="dummy-text">点击选择一项查看</p>
+						<div class="dummy-img">
+                           <ul id="amul">
+                              <li class="titles">旋转魔方</li>
+                              <li class="titles">倾斜跷跷板</li>
+                              <li class="titles">苹果Deck</li>
+                              <li class="titles">跑马灯轮播</li>
+                            </ul>
+                        </div>
+                        <div id="details" style="opacity: 0;">
+				              <input type="button" value="×" id="conclose">
+<!--				              <iframe src="littles/cube.html" id="iframe"></iframe>
+-->			            </div>
+					</div>
+					<div>
+						<p class="dummy-text">点击选择一项查看</p>
+						<div class="dummy-img"></div>
+					</div>
+					<div>
+						<p class="dummy-text">点击选择一项查看</p>
+						<div class="dummy-img"></div>
+					</div>
+					<div>
+						<p class="dummy-text">点击选择一项查看</p>
+						<div class="dummy-img"></div>
+					</div>
+					<span class="loading1"></span>
+					<span class="icon1 close-content" id="icon1"></span>
+				</div>
+			</section>
+		</div><!-- /container -->
+    </div>
+        <script src="js/classie.js"></script>
+        <script src="js/cookie.js"></script>
+		<script src="js/grid3d.js"></script>
+		<script>
+			new grid3D( document.getElementById( 'grid3d' ) );
+	
+			window.onload=function(){
+                var oIcon1=document.getElementById('icon1');
+				var oGrid=document.getElementsByClassName('grid')[0];
+				var oAmul=document.getElementById('amul');
+				var aLi=oAmul.children;
+				var oDetail=document.getElementById('details');
+				var oConclose=document.getElementById('conclose');
+				//for(var i=0;i<aLi.length;i++){
+					aLi[0].onclick=function(){
+						oDetail.style.transform = "translateZ(0px) rotateY(0deg)";
+						oDetail.style.opacity=1;
+					}
+				//}
+				oConclose.onclick=function(){
+						oDetail.style.transform = "translateZ(900px) rotateY(-50deg)";
+						oDetail.style.opacity=0;
+				}
+				oGrid.onclick=function(){
+						parent.window.parHide();
+				}
+				oIcon1.onclick=function(){
+					   parent.window.parShow();
+				}
+				
+			}
+		</script>
+	</body>
+</html>
