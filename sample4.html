@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0;}
+body{ background:#000;}
+p#h{margin:10px auto;font-size:30px;width:153px;color:#fef58c;font-weight:bold;}
+#DJS { position: absolute;left:50%;top:0%;margin-left:-300px;width: 600px; height: 600px; overflow:hidden;}
+#fill_in { font-size: 14px; color: #ccc; font-weight: bold; position: absolute; top: 108px; left: 136px; }
+#fill_in input { background: #ccc; border: 0;border-radius:10%; text-align: center; font-weight: bold; font-size: 14px; color: #ccc; float: left; overflow: hidden;height: 18px; line-height: 18px; color: #666; position: relative; top: 2px; outline:none;}
+#fill_in span { float: left; padding-top: 4px; text-align:center; }
+#fill_in .long_text { width: 80px;  }
+#fill_in .text { width: 50px; }
+#fill_in .title { width: 60px; }
+#fill_in .space1 { width: 36px; }
+#fill_in .space2 { width: 28px; }
+#fill_in .space3 { padding-left: 8px; }
+
+.go { position: absolute; top: 155px; left: 237px; width: 150px; height: 150px; background:pink;text-align:center;line-height:150px;font-size:30px;font-weight:bold;color:#F03;border-radius:50%;}
+.go:hover { background: red; color:#fff;}
+.active {position: absolute; top: 155px; left: 237px; width: 150px; height: 150px;filter:alpha(opacity:0); opacity:0;}
+
+#target { width: 100%; text-align: center; color: #ccc; font-weight: bold; position: absolute; left: 0; top: 336px; font-family: arial; }
+#target strong { color: #fef58c; }
+
+#date { position: absolute; top: 392px; right: 92px; color: #fc3; font-size: 48px; font-family: arial; font-weight: bold; }
+#date p { position: absolute; top: 0; }
+#date i{position:absolute;top:0;font-style:normal;color:#ccc;font-size:20px;width:50px;text-align:center;height:48px;line-height:48px;}
+#day { right: 340px; }
+#hour { right: 236px; }
+#min { right: 132px; }
+#sec { right: 28px; }
+#day1 { right: 290px; }
+#hour1 { right: 186px; }
+#min1{ right: 82px; }
+#sec1{ right: -22px; }
+h1 { position: absolute; bottom: 0; right: 0; }
+h1 a { position: absolute; right: 40px; bottom: 30px; width: 292px; height: 72px; }
+
+
+</style>
+<script>
+function fillZero(n){
+	
+   return n<10 ? "0" + n : "" +n;
+}
+function d2a(n){
+	return n*Math.PI/180;
+}
+window.onload = function(){
+  document.title = "倒计时--张媛媛";
+	
+  var oDiv=document.getElementById('fill_in');
+  var aIpt=oDiv.getElementsByTagName('input');
+  var oDate=document.getElementById('date');
+  var oDay=document.getElementById('day');
+  var oHour=document.getElementById('hour');
+  var oMin=document.getElementById('min');
+  var oSec=document.getElementById('sec');
+  var oP=document.getElementById('target');
+  var oGo=document.getElementById('go');
+  var oT= null;
+  var timer=null;
+  
+  
+
+  oGo.onclick=function(){
+	var tY=aIpt[0].value-0;
+	var tM=aIpt[1].value-1;
+	var tD=aIpt[2].value-0;
+	var target=new Date();
+	target.setFullYear(tY,tM,tD);
+	target.setHours(0,0,0);
+	oT=target.getTime();
+	timer=setInterval(tick,1000);  
+	
+	oP.innerHTML = "现在距离 -<strong>"+tY+"年"+(tM+1)+"月"+tD+"日</strong>-还剩：";
+
+	
+   };
+  
+  function tick(){
+	  var now=new Date();
+	  var s=parseInt((oT-now.getTime())/1000);
+	  
+	  var oD=fillZero(parseInt(s/86400));
+	  oDay.innerHTML=oD;
+	  s%=86400;
+	  var oH=fillZero(parseInt(s/3600));
+	  oHour.innerHTML=oH;
+	  s%=3600;
+	  var oM=fillZero(parseInt(s/60));
+	  oMin.innerHTML=oM;
+	  var oS=fillZero(s%60)
+	  oSec.innerHTML=oS;
+  
+  }
+	
+};
+
+</script>
+</head>
+
+<body>
+<p id="h">开始倒计时</p>
+<div id="DJS">
+    <div id="fill_in">
+        <span class="title">请输入：</span>
+        <input type="text" class="long_text" value="2017" />
+        <span class="space1">年</span>
+        <input type="text" class="text" value="12" />
+        <span class="space2">月</span>
+        <input type="text" class="text" value="25" />
+        <span class="space3">日</span>
+    </div>
+
+    <a href="javascript:;" id="go" class="go">Go</a>
+
+    <p id="target">
+        现在距离 -
+        <strong>2017年12月25日</strong>
+        - 还剩：
+    </p>
+
+    <div id="date">
+        <p id="day">00</p><i id="day1">天</i>
+        <p id="hour">00</p><i id="hour1">小时</i>
+        <p id="min">00</p><i id="min1">分</i>
+        <p id="sec">00</p><i id="sec1">秒</i>
+    </div>
+
+</div>
+
+
+</body>
+</html>
+

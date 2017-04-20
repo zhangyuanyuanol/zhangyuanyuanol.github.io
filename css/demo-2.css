@@ -6,7 +6,8 @@
 
 .demo-2 {
 	position:relative;
-	background: #3498db;
+	background:url(../img/bg8.png);
+	background-size:cover;
 	color: #fff;
 	font-size: 100%;
 	line-height: 1.25;

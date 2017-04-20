@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>文件拖拽上传</title>
+		<style>
+			*{margin: 0;padding: 0;}
+			#box{width: 200px;height: 200px;border: 1px dashed grey;margin: 100px auto;display: none;}
+			#txt{width: 300px;height: 400px;display:block;margin: 80px auto;}
+			p{width:350px;height:30px;font-size:30px;text-align:center;position: absolute;left: 50%;top: 20px;margin-left: -150px;}
+		</style>
+		<script>
+			window.onload=function(){
+				var oDiv=document.querySelector("#box");
+				var timer=null;
+				document.ondragover=function(){
+					oDiv.style.display="block";
+					clearInterval(timer);
+					timer=setInterval(function(){
+						oDiv.style.display="none";
+					},300);
+				};
+				oDiv.ondragenter=function(){
+					oDiv.innerHTML="快放到碗里来";
+				};
+				oDiv.ondragleave=function(){
+					oDiv.innerHTML="离开了";
+				};
+				oDiv.ondragover=function(){
+					oDiv.innerHTML=Math.random();
+					return false;
+				};
+				oDiv.ondrop=function(ev){
+					var oFile=ev.dataTransfer.files[0];
+					var reader=new FileReader();
+					reader.onload=function(){
+						var oTxt=document.querySelector("#txt");
+						oTxt.value=reader.result;
+					};
+					reader.onprogress=function(ev){
+						console.log(ev.loaded/ev.total);
+					};
+					//reader.readAsText(oFile);
+					//reader.readAsBinaryString(oFile);
+					reader.readAsDataURL(oFile);
+					return false;
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<div id="box"></div>
+		<p>请将文件拖至浏览器界面</p>
+		<textarea id="txt"></textarea>
+	</body>
+</html>
+

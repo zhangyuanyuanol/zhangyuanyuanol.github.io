@@ -1,67 +1,78 @@
-//版权 北京智能社©, 保留所有权利
 
-//'完美'运动
 function move(obj,json,options){
-	options=options||{};
-	options.time=options.time||300;
+	function getStyle(obj,name){
+		  return (obj.currentStyle||getComputedStyle(obj,null))[name];
+	}
+	options = options || {};
+	options.duration = options.duration || 700;
 	options.fn=options.fn||null;
-	options.type=options.type||'ease-out';
+	//options.easing = options.easing || Tween.Bounce.easeOut;
+	options.easing = options.easing || "ease-out";
 	
-	var start={};//准备一个空start用来存储一堆初始值
-	var dis={};//准备一个空dis用来存储一堆运动距离
+	//起点 
+	var start = {};
+	var dis = {};
+	var count = Math.round(options.duration/30);
 	
-	for(var key in json){//挑出用户传入的json
-		start[key]=parseFloat(getStyle(obj,key));//每一个属性的起始位置
-		dis[key]=json[key]-start[key];	//每一个属性的运动距离
+	for(var name in json){
+		start[name] = parseFloat(getStyle(obj,name));
+		dis[name] = json[name] - start[name];
 	}
 	
-	var count=Math.round(options.time/30);	
-	var n=0;
+	//console.log(dis)
+	var n = 0;
 	
 	clearInterval(obj.timer);
 	obj.timer=setInterval(function(){
 		n++;
-		
-		for(var key in json){
-			switch(options.type){
-				case 'linear':
-					var a=n/count;//0---1的数
-					var cur=start[key]+dis[key]*a;//匀速
-					break;	
+		for(var name in json){
+			
+			switch(options.easing){
 				case 'ease-in':
-					var a=n/count;//0---1的数
-					var cur=start[key]+dis[key]*(a*a*a);//加速
-					break;	
-				case 'ease-out':
-					var a=1-n/count;//0---1的数
-					var cur=start[key]+dis[key]*(1-a*a*a);//减速
+					var a=n/count;
+					var cur=start[name]+dis[name]*a*a;
 					break;
-				case 'ease-in-out'://过渡一下
-					if(n/count<=0.5){	
-						//加速
-						var a=n/count*1.5;//0---1的数
-						var cur=start[key]+dis[key]*(a*a*a);//加速
+				case 'ease-out':
+					var a=1-n/count;
+					var cur=start[name]+dis[name]*(1-a*a);
+					break;
+				case 'linear':
+					var a=n/count;
+					var cur=start[name]+dis[name]*a;
+					break;
+				case 'ease-in-out':
+					if(n/count<=0.5){
+						
+						var a=n/count*1.5;
+					    var cur=start[name]+dis[name]*a*a;  
+						
 					}else{
-						//减速
-						move(obj,json,{time:options.time/2,fn:options.fn});	
+						
+						move(obj,json,{duration:options.duration/2,easing:'ease-out',fn:options.fn});
 					}
-					break;	
+					break;
+				
 			}
 			
-			if(key=='opacity'){
-				obj.style.opacity=cur;
-				obj.style.filter='alpha(opacity='+(cur*100)+')';	
-			}else{
-				obj.style[key]=cur+'px';	
+			if(name == "opacity"){
+				obj.style.opacity = cur;
+				obj.style.filter = "alpha(opacity:"+cur*100+")";
+			}  else if (name == "transform"){
+				
+				obj.style.transform = "rotateZ("+cur+"deg)";
+				
+			} else {
+				obj.style[name] = cur +　"px";
 			}
+		
 		}
 		
-		if(n==count){//停止条件
+		if(n == count){
 			clearInterval(obj.timer);
-			console.timeEnd('go');
-			options.fn && options.fn();	//回调函数存在(用户传了函数)，再去调用
+			options.complete && options.complete();
+			options.fn && options.fn();	
 		}
+		
 	},30);
 	
-		
 }

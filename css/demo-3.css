@@ -6,18 +6,22 @@
 
 .demo-2 {
 	position:relative;
-	background: #3498db;
+	background:url(../img/bg9.png);
+	background-size:cover;
 	color: #fff;
 	font-size: 100%;
 	line-height: 1.25;
-	height:654px;
+	height:720px;
 	font-family: 'Lato', Arial, sans-serif;
+	overflow-y:hidden;
 }
 
 .demo-2 .container {
-	overflow: hidden;
+	height:720px;
+	position:relative;
 }
-
+.demo-2 .container #qipao{position:absolute;width:200px;height:200px;left:50%;margin-left:-100px;bottom:15px;display:none;}
+.demo-2 .container #qipao img{width:100%;height:100%;}
 .demo-2 a {
 	color: rgba(0,0,0,0.4);
 	text-decoration: none;
@@ -29,9 +33,10 @@
 }
 
 .demo-2 section {
-	padding: 0em 3% 4em;
+	padding: 0em 3% 0em;
 	text-align: center;
 	font-size: 1.5em;
+	overflow:hidden;
 }
 
 
@@ -79,26 +84,36 @@
 	overflow: hidden;
 }
 .itemList{
-	    position:relative;
-	    perspective: 800px;
+	    -webkit-perspective: 800px;
+		-moz-perspective: 800px;
+		perspective: 800px;
 		transform-style: preserve-3d;
+		    -webkit-transform: rotateX(0deg) rotateZ(0deg);
+			-moz-transform: rotateX(0deg) rotateZ(0deg);
+			transform: rotateX(0deg) rotateZ(0deg);
+    transition: 0.3s all ease;
+    transform-origin: center center;
+
+    width: 10px;
+    height: 10px;
+    left: 0%;
+
 }
 .grid-wrap {
-	margin: 50px auto 0;
-	max-width: 1090px;
-	width: 100%;
+	margin:0 auto;
+	width: 1090px;
 	padding: 0;
 	-webkit-perspective: 1500px;
 	-moz-perspective: 1500px;
 	perspective: 1500px;
+	height:720px;
 }
 
 .grid {
-	position: relative;
-	width:470px;
-	height:470px;
+	position:relative;
+	width:1070px;
+	height:720px;
 	margin:0 auto;
-	margin-top:10px;
 	-webkit-transition: all 0.5s cubic-bezier(0,0,0.25,1);
 	-moz-transition: all 0.5s cubic-bezier(0,0,0.25,1);
 	transition: all 0.5s cubic-bezier(0,0,0.25,1);
@@ -106,7 +121,6 @@
 	-moz-transform-style: preserve-3d;
 	transform-style: preserve-3d;
 }
-
 .view-full .grid {
 	-webkit-transform: translateZ(-1500px);
 	-moz-transform: translateZ(-1500px);
@@ -117,18 +131,20 @@
 .grid .placeholder {
 	width: 150px;
 	height: 150px;
-	border-radius:5px;
-	transform:rotate(45deg);
+	border-radius:50%;
+
+    -webkit-transform-origin:50% 50%;
+	-moz-transform-origin:50% 50%;
+	transform-origin:50% 50%;
 }
-figure#first{position:absolute;left:150px;top:20px;}
-figure#second{position:absolute;left:20px;top:150px;}
-figure#third{position:absolute;left:280px;top:150px;}
-figure#four{position:absolute;left:150px;top:280px;}
+.grid figure{transform:rotate(45deg);}
+.grid .placeholder {
+	    transform:rotate(45deg);
+		transition:0.5s all ease;
+}
 .grid figure {
-	margin: 5px;
-	border:1px solid #ccc;
-	border-radius:5px;
-	transform: rotate(45deg);
+	margin:0;
+	border-radius:50%;
 	display: inline-block;
 	cursor: pointer;
 	-webkit-touch-callout: none;
@@ -137,12 +153,19 @@ figure#four{position:absolute;left:150px;top:280px;}
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+	
+/*	    border: 5px solid #F39;
+    border-right-color: #6FF;
+    border-bottom-color: #FF9;
+*/
 }
-
+.grid #first{position:absolute;left:0;top:200px;}
+.grid #second{position:absolute;left:280px;top:180px;}
+.grid #third{position:absolute;left:600px;top:250px;}
+.grid #four{position:absolute;left:850px;top:200px;}
 .grid figure.active {
 	opacity: 0;
 }
-
 .grid .placeholder {
 	pointer-events: none;
 	position: absolute;
@@ -196,27 +219,51 @@ figure#four{position:absolute;left:150px;top:280px;}
 }
 .grid figure img{
 	display: block;
-	width: 150px;
-	height:150px;
-	border-radius:5px;
+	width: 140px;
+	height:140px;
+	position:absolute;
+	top:0;
+	left:0;
     text-align: center;
-    line-height: 150px;
+    line-height: 140px;
     font-size: 28px;
+		border-radius:50%;
+    -webkit-transform-origin:50% 50%;
+		-moz-transform-origin:50% 50%;
+	transform-origin:50% 50%;
+	transform:rotate(-405deg);
+/*		    border: 5px solid #F39;
+    border-right-color: #6FF;
+    border-bottom-color: #FF9;   
+    box-shadow: rgba(255, 0, 0, 0.498039) 5px 0px 5px, rgba(255, 20, 147, 0.298039) -5px 0px 5px, rgba(0, 0, 255, 0.498039) 0px 5px 0px, rgba(144, 238, 144, 0.498039) 0px -5px 0px, rgba(255, 255, 255, 0.901961) 0px 0px 5px inset;*/
 }
+.grid #first img{background-image:radial-gradient(rgba(255,255,255,.2) 30%,rgba(204,153,255,.8));
+    box-shadow: 0 0 4px 4px rgba(255,102,255,.3);}
+.grid #second img{background-image:radial-gradient(rgba(255,255,255,.2) 30%,rgba(255,255,102,.8));box-shadow: 0 0 4px 4px rgba(255,255,255,.3);}
+.grid #third img{background-image:radial-gradient(rgba(255,255,255,.2) 30%,rgba(255,102,255,.8));box-shadow: 0 0 4px 4px rgba(204,153,255,.6);}
+.grid #four img{background-image:radial-gradient(rgba(255,255,255,.2) 30%,rgba(51,255,102,.8));box-shadow: 0 0 4px 4px rgba(255,255,255,.3);}
 .grid figure span{
 	display: block;
 	width: 150px;
 	height:150px;
 	position:absolute;
-	top:4px;
-	left:10px;
+	top:0;
+	left:0;
 	color:#F6C;
-	border-radius:5px;
+	border-radius:50%;
     text-align: center;
     line-height: 150px;
     font-size: 28px;
+		transition:0.5s all ease;
+    -webkit-transform-origin:50% 50%;
+		-moz-transform-origin:50% 50%;
+	transform-origin:50% 50%;
 	transform:rotate(-45deg);
+	
 }
+<!--.grid figure:hover span{transform:rotate(-45deg);}
+-->
+
 
 .content{
 	position: fixed;
@@ -236,7 +283,6 @@ figure#four{position:absolute;left:150px;top:280px;}
 }*/
 
 .content {
-	overflow-y: scroll;
 	height: 0; /* What seems to be the problem, officer? Well, we have a second scroll bar in Chrome! */
 	background: #fff;
 	visibility: hidden;
@@ -287,6 +333,7 @@ figure#four{position:absolute;left:150px;top:280px;}
 	-webkit-transition: opacity 0.6s;
 	-moz-transition: opacity 0.6s;
 	transition: opacity 0.6s;
+	overflow-y:no-scroll;
 }
 
 .icon1{
@@ -372,9 +419,9 @@ p.dummy-text:nth-child(3) {
 }
 
 .dummy-img {
-	width:800px;
+	width:850px;
 	height:500px;
-	background:#029df9;
+	background:#fff;
 	margin: 100px auto;
 }
 
@@ -425,7 +472,7 @@ p.dummy-text:nth-child(3) {
 	font-family:'Microsoft Yahei';
 	font-size:16px;
 }
-#details {
+.details{
     width: 1000px;
     height:600px;
     left: 50%;
@@ -433,12 +480,14 @@ p.dummy-text:nth-child(3) {
     position: absolute;
     top:60px;
     background:white;
-    transform: translateZ(900px) rotateY(-50deg);
+    -webkit-transform:translateZ(900px) rotateY(-50deg);
+	-moz-transform:translateZ(900px) rotateY(-50deg);
+	transform:translateZ(900px) rotateY(-50deg);
     transition: 1s all ease;
     opacity: 1;
     transform-origin: center center;
 }
-#conclose{
+.conclose{
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -453,3 +502,10 @@ p.dummy-text:nth-child(3) {
     cursor: pointer;
     color: white;
 }
+#iframek1{border:none;}
+#iframek4{border:none;}
+#amul{width:510px; margin:30px auto;}
+#amul li{float:left; position:relative;width:150px; height:150px; line-height:150px; font-size:30px; text-align:center;background:#ccc; overflow:hidden; margin:10px;}
+#amul li span{ position:absolute;left:-150px;top:0;width:150px; height:150px; background:pink;}
+
+

@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>便签墙</title>
+<style>
+*{ margin:0; padding:0; list-style:none; font-family:"张海山锐线体简"}
+.messQ{}
+.messQ ul li{
+	width:12em;
+	height:12em;
+	margin: 1em;
+	float:left;
+	outline:1px solid transparent;
+	}
+
+.messQ ul li a{
+	display:block;
+	width:10em;
+	height:10em;
+	padding: 1em;
+	color:#000;
+	text-decoration:none;
+	background:#39C;
+	border-radius:0 0 2em 0px;
+	transition: all .5s;
+	opacity:0;
+	outline:1px solid transparent;
+	-webkit-animation: allAMT 1s forwards;
+	-moz-animation: allAMT 1s forwards;
+	-ms-animation: allAMT 1s forwards;
+	animation: allAMT 1s forwards;
+	}
+.messQ ul li:nth-child(7){
+	-webkit-animation: tom .5s infinite alternate .5s;
+	-moz-animation: tom .5s infinite alternate .5s;
+	-ms-animation: tom .5s infinite alternate .5s;
+	animation: tom .5s infinite alternate .5s;
+	}
+.messQ ul li:nth-child(3) a h2{
+	-webkit-animation: flash .2s infinite alternate 1.5s;
+	-moz-animation: flash .2s infinite alternate 1.5s;
+	-ms-animation: flash .2s infinite alternate 1.5s;
+	animation: flash .2s infinite alternate 1.5s;
+	}
+
+
+@-webkit-keyframes tom{
+	0%{transform:rotate(0deg);}	
+	100%{transform:rotate(15deg);}	
+}
+@-moz-keyframes tom{
+	0%{transform:rotate(0deg);}	
+	100%{transform:rotate(15deg);}	
+}
+@-ms-keyframes tom{
+	0%{transform:rotate(0deg);}	
+	100%{transform:rotate(15deg);}	
+}
+@keyframes tom{
+	0%{transform:rotate(0deg);}	
+	100%{transform:rotate(15deg);}	
+}
+@-webkit-keyframes flash{
+	0%{color:#000}	
+	100%{color:#f00}	
+}
+@-moz-keyframes flash{
+	0%{color:#000}	
+	100%{color:#f00}	
+}
+@-ms-keyframes flash{
+	0%{color:#000}	
+	100%{color:#f00}	
+}
+@keyframes flash{
+	0%{color:#000}	
+	100%{color:#f00}	
+}
+@-webkit-keyframes allAMT{
+	0%{opacity:0;}	
+	100%{opacity:1;}	
+}
+@-moz-keyframes allAMT{
+	0%{opacity:0;}	
+	100%{opacity:1;}	
+}
+@-ms-keyframes allAMT{
+	0%{opacity:0;}	
+	100%{opacity:1;}	
+}
+@keyframes allAMT{
+	0%{opacity:0;}	
+	100%{opacity:1;}	
+}
+.messQ ul li:nth-child(2n) a{
+	background:#FC0;
+	transform: rotate(-3deg);
+	-webkit-animation: allAMT 1s forwards .5s;
+	-moz-animation: allAMT 1s forwards .5s;
+	-ms-animation: allAMT 1s forwards .5s;
+	animation: allAMT 1s forwards .5s;
+	}
+.messQ ul li:nth-child(3n) a{
+	background: #6C9;
+	transform: rotate(3deg);
+	-webkit-animation: allAMT 1s forwards 1s;
+	-moz-animation: allAMT 1s forwards 1s;
+	-ms-animation: allAMT 1s forwards 1s;
+	animation: allAMT 1s forwards 1s;
+	}
+.messQ ul li:nth-child(5n) a{
+	background: #969;
+	transform: rotate(7deg);
+	-webkit-animation: allAMT 1s forwards 1.5s;
+	-moz-animation: allAMT 1s forwards 1.5s;
+	-ms-animation: allAMT 1s forwards 1.5s;
+	animation: allAMT 1s forwards 1.5s;
+	}
+.messQ ul li a h2{
+	margin-bottom: 1em;
+	}
+.messQ ul li a p{
+	text-indent: 2em;
+	word-break:break-all;
+	}	
+.messQ ul li a:link{
+	background-image:-webkit-radial-gradient(left top,rgba(0,0,0,0),rgba(0,0,0,0) 90%,rgba(0,0,0,1));  
+	background-image:-moz-radial-gradient(left top,rgba(0,0,0,0),rgba(0,0,0,0) 90%,rgba(0,0,0,1));   
+	background-image:-ms-radial-gradient(left top,rgba(0,0,0,0),rgba(0,0,0,0) 90%,rgba(0,0,0,1));  
+	background-image:radial-gradient(at left top,rgba(0,0,0,0),rgba(0,0,0,0) 90%,rgba(0,0,0,1));         
+}
+.messQ ul li:hover a,
+.messQ ul li a:focus{
+	transform: rotate(0) scale(1.5,1.5);
+	position:relative;
+	z-index:2;
+	outline:none;
+	}
+.messQ ul li:nth-child(7):hover,
+.messQ ul li:nth-child(3) a:hover h2{
+	-webkit-animation-play-state:paused;
+	-moz-animation-play-state:paused;
+	-ms-animation-play-state:paused;
+	animation-play-state:paused;
+	/*-webkit-animation-fill-mode:backwards;*/
+	}
+/*.messQ ul li:nth-child(7):hover{
+	transform:rotate(180deg);
+	position:relative;
+	z-index:22;
+}
+.messQ ul li:nth-child(7):hover a{
+	transform:rotate(180deg) scale(2.5,2.5);
+	
+	}*/
+.messQ ul li:hover,
+.messQ ul li:hover a h2{-webkit-animation:paused;-moz-animation:paused;-ms-animation:paused;animation:paused;}
+
+</style>
+</head>
+
+<body>
+    <hr>
+    <div class="messQ">
+        <ul>
+          <li><a href="#">
+            <h2>Dudu：</h2>
+            <p>最近咋没有美女发帖呢？我一定给个头条推荐,recommend!recommend!</p>
+            </a></li>
+          <li><a href="#">
+            <h2>汤姆大叔：</h2>
+            <p>Team的一个成员去了Microsoft做SDE3，又得hire new member了</p>
+            </a></li>
+          <li><a href="#">
+            <h2>技术弟弟：</h2>
+            <p>O2DS和我翻译的书是一样，我一定要比他翻得快, 晚上加班翻,fast! fast! fast!</p>
+            </a></li>
+          <li><a href="#">
+            <h2>Artech：</h2>
+            <p>WCF的帖子真是少，看来我得多发点帖子让大家学习呢</p>
+            </a></li>
+          <li><a href="#">
+            <h2>吉日嘎拉：</h2>
+            <p>将权限管理、工作流管理做到我能力的极致，一个人只能做好那么很少的几件事情</p>
+            </a></li>
+          <li><a href="#">
+            <h2>Dudu：</h2>
+            <p>最近咋没有美女发帖呢？我一定给个头条推荐,recommend!recommend!</p>
+            </a></li>
+          <li><a href="#">
+            <h2>汤姆大叔：</h2>
+            <p>Team的一个成员去了Microsoft做SDE3，又得hire new member了</p>
+            </a></li>
+          <li><a href="#">
+            <h2>技术弟弟：</h2>
+            <p>O2DS和我翻译的书是一样，我一定要比他翻得快, 晚上加班翻,fast! fast! fast!</p>
+            </a></li>
+          <li><a href="#">
+            <h2>Artech：</h2>
+            <p>WCF的帖子真是少，看来我得多发点帖子让大家学习呢</p>
+            </a></li>
+          <li><a href="#">
+            <h2>吉日嘎拉：</h2>
+            <p>将权限管理、工作流管理做到我能力的极致，一个人只能做好那么很少的几件事情</p>
+            </a></li>
+          <li><a href="#">
+            <h2>Dudu：</h2>
+            <p>最近咋没有美女发帖呢？我一定给个头条推荐,recommend!recommend!</p>
+            </a></li>
+          <li><a href="#">
+            <h2>汤姆大叔：</h2>
+            <p>Team的一个成员去了Microsoft做SDE3，又得hire new member了</p>
+            </a></li>
+          <li><a href="#">
+            <h2>技术弟弟：</h2>
+            <p>O2DS和我翻译的书是一样，我一定要比他翻得快, 晚上加班翻,fast! fast! fast!</p>
+            </a></li>
+          <li><a href="#">
+            <h2>Artech：</h2>
+            <p>WCF的帖子真是少，看来我得多发点帖子让大家学习呢</p>
+            </a></li>
+          <li><a href="#">
+            <h2>吉日嘎拉：</h2>
+            <p>将权限管理、工作流管理做到我能力的极致，一个人只能做好那么很少的几件事情</p>
+            </a></li>
+          <li><a href="#">
+            <h2>Dudu：</h2>
+            <p>最近咋没有美女发帖呢？我一定给个头条推荐,recommend!recommend!</p>
+            </a></li>
+          <li><a href="#">
+            <h2>汤姆大叔：</h2>
+            <p>Team的一个成员去了Microsoft做SDE3，又得hire new member了</p>
+            </a></li>
+          <li><a href="#">
+            <h2>技术弟弟：</h2>
+            <p>O2DS和我翻译的书是一样，我一定要比他翻得快, 晚上加班翻,fast! fast! fast!</p>
+            </a></li>
+        </ul>
+    </div>
+    <hr>
+</body>
+</html>

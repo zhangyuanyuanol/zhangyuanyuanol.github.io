@@ -10,23 +10,44 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 
 		<script src="js/modernizr.custom.js"></script>
-        <script>
-
-		</script>
 	</head>
 	<body>
         <div class="wrap">
-            <div id="div1" class="header" style="bottom:-64px;">
+            <div id="div1" class="header"  style="opacity:0;">
             <div class="head_nav">
-                <a href="javascript:;"><b>Wy' <span>javascript</span></b></a>
-                <ul id="nav">
-                    <li><a class="" href="javascript:;">我的首页</a></li>
-                    <li><a href="javascript:;">我的作品</a></li>
-                    <li><a href="javascript:;">3D全景图</a></li>
-                    <li><a href="javascript:;">动感导航</a></li>
-                    <li><a href="javascript:;">给我留言</a></li>
-                    <li><a href="javascript:;">百度一下</a></li>
-                    <li class="e_li"></li>
+                  <ul class="nav" id="nav" style="display:block;opacity:1;">
+                          <li class="li1">
+                                <div class="pre">
+                                   <h2>我的首页</h2>
+                                </div>
+                                <div class="back">
+                                   <a href="javascript:;"><h2>我的首页</h2></a>
+                                </div>
+                          </li>
+                          <li class="li2">
+                                <div class="pre">
+                                   <h2>我的作品</h2>
+                                </div>
+                                <div class="back">
+                                   <a href="javascript:;"><h2>我的作品</h2></a>
+                                </div>
+                          </li>
+                          <li class="li3">
+                                <div class="pre">
+                                   <h2>我的技能</h2>
+                                </div>
+                                <div class="back">
+                                   <a href="javascript:;"><h2>我的技能</h2></a>
+                                </div>
+                          </li>
+                        <li class="li4">
+                                <div class="pre">
+                                   <h2>联系我</h2>
+                                </div>
+                                <div class="back">
+                                   <a href="javascript:;"><h2>联系我</h2></a>
+                                </div>
+                        </li>
                 </ul>
             </div>
         </div>       
@@ -34,14 +55,15 @@
               <div id="ip-container" class="ip-container">
                     <!-- initial header -->
                     <header class="ip-header">
-                        <h1 class="ip-logo">
-                            Loading!
-                        </h1>
+                        <div class="ip-logo">
+                            <img src="img/yellow2.png" />
+                        </div>
                         <div class="ip-loader">
                             <svg class="ip-inner" width="60px" height="60px" viewBox="0 0 80 80">
                                 <path class="ip-loader-circlebg" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z"/>
                                 <path id="ip-loader-circle" class="ip-loader-circle" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z"/>
                             </svg>
+                            <span id="scale"></span>
                         </div>
                     </header>
                     <!-- main content -->
@@ -54,17 +76,32 @@
                                 </ul>
                                 <audio src="sound.mp3"> </audio>
                             </div>
+                            <div class="square" id="square">
+                                  <div class="z_front"></div>
+                                  <div class="z_back"></div>
+                                  <div class="z_right"></div>
+                                  <div class="z_left"></div>
+                                  <div class="z_top"></div>
+                                  <div class="z_bottom"></div>
+                      
+                                  <span class="s_front"></span>
+                                  <span class="s_back"></span>
+                                  <span class="s_right"></span>
+                                  <span class="s_left"></span>
+                                  <span class="s_top"></span>
+                                  <span class="s_bottom"></span>
+                            </div>
                             <div id="hotWord" class="hotWord">
                                 <div class="box">前端</div>
                                 <ul>
-                                    <li>css3</li>
-                                    <li>HTML5</li>
-                                    <li>javascript</li>
-                                    <li>ajax</li>
-                                    <li>jquery</li>
-                                    <li>jsonp</li>
-                                    <li>php</li>
-                                    <li>seajs</li>
+                                    <li><img src="0.png" /></li>
+                                    <li><img src="1.png" /></li>
+                                    <li><img src="2.png" /></li>
+                                    <li><img src="3.png" /></li>
+                                    <li><img src="4.png" /></li>
+                                    <li><img src="5.png" /></li>
+                                    <li><img src="6.png" /></li>
+                                    <li><img src="7.png" /></li>
                                 </ul>
                             </div>
 		                </div>
@@ -90,7 +127,7 @@
                                 <a href="javascript:;" class="nav_btn">
                                 <span class="line line_top"></span><span class="line line_left"></span><span class="line line_right"></span>
                                 <span class="line line_bottom"></span> 
-                                About me
+                                My skill
                                 </a>        
                             </div>
                             <div class="link link_message">
@@ -105,21 +142,33 @@
                     </div>
                </div><!-- /container -->
               <div class="page" id="page1">
-                  <iframe id="iframek" src="simple2.html"></iframe>
+                  <iframe id="iframek" src="simple2.html" scrolling="no"></iframe>
               </div>
-              <div class="page" id="page2"></div>
-              <div class="page" id="page3"></div>
-              <div class="page" id="page4"></div>
-              <div class="page" id="page5"></div>
+              <div class="page" id="page2">
+                 <ul>
+                 </ul>
+              </div>
+              <div class="page" id="page3">
+                  <div id="mask" style="position:absolute;width:1158px;height:459px;background:url(img/border.png) no-repeat;background-size:cover;margin-top:190px;left:50%;margin-left:-579px;">
+                        <div class="jieshao" id="jieshao">
+                            <p>姓名：<span>张媛媛</span></p>
+                            <p>性别：<span>女</span></p>
+                            <p>手机号码：<span>18217449018</span></p>
+                            <p>邮箱：<span>zyy1030xiel@sina.com</span></p>
+                            <p>出生年月：<span>1991/09</span></p>
+                            <p>爱好： <span>前端</span></p>
+                            <canvas id="ca"></canvas>
+                        </div>
+                  </div>
+                  <iframe id="iframeg" oFrameg.src="" scrolling="no"></iframe>
+              </div>
         </div>
         </div>
 		<script src="js/classie.js"></script>
 		<script src="js/pathLoader.js"></script>
-        <script src="js/move.js"></script>
 		<script src="js/main.js"></script>
         <script src="js/common.js"></script>
         <script src="js/index.js"></script>
-        <script src="js/cookie.js"></script>
         <script>
 		       var oHeader=document.getElementById('div1');
 			   function parHide(){
@@ -130,99 +179,271 @@
 			   }
         </script>
         <script>
-		   window.onload=function(){
-/*			  var oNew=document.getElementById('onew');
-			  var oIframek=document.getElementById('iframek');
-			  var oHeader=document.getElementById('div1');
-			  var obtnClose=document.getElementById('btnClose');
-			  obtnClose.onclick=function(){
-				  oIframek.style.zIndex=-1;
-				  oIframek.style.opacity=0;
-				  oHeader.style.zIndex=999999;
-				  obtnClose.style.display='none';
-			  }
-			  oNew.onclick=function(){
-				  window.location='demo-2.html';
-				  window.open("demo-2.html","","width=1000,height=700,left=150,location=no,toolbar=no,menubar=no,status=no") 
-                 oIframek.style.zIndex=5;
-                   oIframek.style.opacity=1;
-                   oHeader.style.zIndex=-1;
-				   obtnClose.style.display='block';
-			  }*/
-            
+		   window.onload=function(){          
 			   var oHeader=document.getElementById('div1');
 			   var oDemo=getByClass(document,'demo')[0];
 			   var aBtn=getByClass(document,'nav_btn');
 			   var oPage1=document.getElementById('page1');
 			   var oNav=document.getElementById('nav');
-			   var aAnchor=oNav.getElementsByTagName('a');
+			   var aPre=getByClass(document,'pre');
+			   var aBack=getByClass(document,'back');
 			   var aNavLi=oNav.children;
-			   var oE_li=getByClass(oNav,'e_li')[0];
+			   var oFrameg=document.getElementById('iframeg');
+			   function addSrc(){
+				   if(oFrameg.src==""){
+					   oFrameg.src="flip.html";
+				   }   
+			   }
 			   for(var i=0;i<aBtn.length;i++){
 				   (function(index){
 					   aBtn[i].onclick=function(){
-						   move(oDemo,{top:-index*720},{time:800});
-						   for(var j=0;j<aAnchor.length;j++){
-								   removeClass(aAnchor[j],'header_active');
+						   for(var j=0;j<aBtn.length;j++){
+							   aPre[j].style.transform='translate3d(0,0,0) rotate3d(1,0,0,0deg)';
+							   aPre[j].style.opacity=1;
+							   aBack[j].style.transform='translate3d(0,0,-150px) rotate3d(1,0,0,90deg)';
+							   aBack[j].style.opacity=0;
 						   }
-						   var oA=aNavLi[index].children[0];
-						   addClass(oA,'header_active');
-						   move(oE_li,{left:aNavLi[index].offsetLeft},{time:100});
-						   if(index!=0){
-							   move(oHeader,{bottom:0},{time:500})
-						   }
-					   }
-				   })(i);
-			   }
-			   function mouseOver(){
-				   
-				   var speed = 0;
-                   var left = 0;
-                   var i = 0;
-				   function move(obj,iTarget){
-						clearInterval(obj.timer);
-						obj.timer = setInterval(function(){	
-							//加速度
-							speed += (iTarget - left)/5;
-							//摩擦
-							speed *= 0.7;
-							left += speed;
-							obj.style.left = Math.round(left) +　"px";
-							//if(obj.offsetLeft == iTarget){
-							//if(Math.abs(speed) < 1){
-							if(obj.offsetLeft == iTarget && Math.abs(speed) < 1){
-								clearInterval(obj.timer);
-							}	
-							document.title =  i++ ;
-						},30);			
-				   }
-				   for(var i=0;i<aNavLi.length-1;i++){
-					   (function(index){
-						   aNavLi[i].onmouseover=function(){
-							   move(oE_li,aNavLi[index].offsetLeft);
-							   for(var j=0;j<aAnchor.length;j++){
-								   removeClass(aAnchor[j],'header_active');
+						   move(oDemo,{top:-index*720},{time:800,fn:function(){
+							   if(index==2){
+								   showLi();
+							   }else if(index==3){
+								   addSrc();
+							   }else{
+								   var oUl=document.getElementById('page2').getElementsByTagName('ul')[0];
+								   oUl.innerHTML='';
 							   }
-							   var oA=aNavLi[index].children[0];
-							   addClass(oA,'header_active');
-						   }
-					   })(i);
-				   }
-			   }
-			   for(var i=0;i<aNavLi.length;i++){
-				   (function(index){
-					   aNavLi[i].onclick=function(){
-						   move(oDemo,{top:-index*720},{time:800});
+						   }});
+						   aPre[index].style.transform='translate3d(0,150px,0) rotate3d(1,0,0,-90deg)';
+						   aPre[index].style.opacity=0;
+						   aBack[index].style.transform='rotate3d(1,0,0,0deg)';
+						   aBack[index].style.opacity=1;
 						   if(index!=0){
-							   move(oHeader,{bottom:0},{time:800});
+							   move(oHeader,{opacity:1},{time:500})
 						   }
-						   if(index==0){
-							   move(oHeader,{bottom:-64},{time:800});
+						   aNavLi[index].onmouseover=null;
+						   aNavLi[index].onmouseout=null;
+                           for(var k=0;k<aNavLi.length;k++){
+							   (function(index1){
+								   aNavLi[k].onmouseover=function(ev){
+										var oEvt=ev||event;
+										var fromObj=oEvt.fromElement||oEvt.relatedTarget;//来自哪里
+										if(fromObj && aNavLi[index1].contains(fromObj)){//里面不算
+											return;	
+										}
+										if(aPre[index1].style.opacity==0){
+											return;
+										}
+											   aPre[index1].style.transform='translate3d(0,150px,0) rotate3d(1,0,0,-90deg)';
+											   aPre[index1].style.opacity=0;
+											   aBack[index1].style.transform='rotate3d(1,0,0,0deg)';
+											   aBack[index1].style.opacity=1;
+										var oAnchor=aBack[index1].getElementsByTagName('a')[0];
+										aNavLi[index1].onmouseout=function(ev){
+											var oEvt=ev||event;
+											var toObj=oEvt.toElement||oEvt.relatedTarget;//来自哪里
+											if(toObj && aNavLi[index1].contains(toObj)){//里面不算
+												return;	
+											}
+										   aPre[index1].style.transform='translate3d(0,0,0) rotate3d(1,0,0,0deg)';
+										   aPre[index1].style.opacity=1;
+										   aBack[index1].style.transform='translate3d(0,0,-150px) rotate3d(1,0,0,90deg)';
+										   aBack[index1].style.opacity=0;
+										}
+										oAnchor.onclick=function(){
+											move(oDemo,{top:-index1*720},{time:800,fn:function(){
+												if(index1==2){
+													showLi();
+												}else if(index1==3){
+													addSrc();
+												}else{
+													var oUl=document.getElementById('page2').getElementsByTagName('ul')[0];
+								                    oUl.innerHTML='';
+												}
+											}});
+											if(index1!=0){
+											   move(oHeader,{opacity:1},{time:500});
+											}
+											if(index1==0){
+											   move(oHeader,{opacity:0},{time:500});
+											}
+										   for(var j=0;j<aBtn.length;j++){
+											   aPre[j].style.transform='translate3d(0,0,0) rotate3d(1,0,0,0deg)';
+											   aPre[j].style.opacity=1;
+											   aBack[j].style.transform='translate3d(0,0,-150px) rotate3d(1,0,0,90deg)';
+											   aBack[j].style.opacity=0;
+										   }
+											aNavLi[index1].onmouseout=function(ev){
+													var oEvt=ev||event;
+													var toObj=oEvt.toElement||oEvt.relatedTarget;//来自哪里
+													if(toObj && aNavLi[index1].contains(toObj)){//里面不算
+														return;	
+													}
+												   aPre[index1].style.transform='translate3d(0,150px,0) rotate3d(1,0,0,-90deg)';
+												   aPre[index1].style.opacity=0;
+												   aBack[index1].style.transform='rotate3d(1,0,0,0deg)';
+												   aBack[index1].style.opacity=1;
+											}
+										   aPre[index1].style.transform='translate3d(0,150px,0) rotate3d(1,0,0,-90deg)';
+										   aPre[index1].style.opacity=0;
+										   aBack[index1].style.transform='rotate3d(1,0,0,0deg)';
+										   aBack[index1].style.opacity=1;
+										}	
+								   }
+							   })(k);
 						   }
 					   }
 				   })(i);
 			   }
-			   mouseOver();
+			   function showLi(){
+					   var oUl=document.getElementById('page2').getElementsByTagName('ul')[0];
+					   var aPos=[];
+					   oUl.innerHTML='';
+					   for(var i=0;i<6;i++){
+						   var oLi=document.createElement('li');
+						   oUl.appendChild(oLi);
+					   }
+						var aLi= oUl.children;
+						for(var i=0;i<aLi.length;i++){
+						   aPos[i]={left:aLi[i].offsetLeft,top:aLi[i].offsetTop}
+						   aLi[i].style.left=aPos[i].left+'px';
+						   aLi[i].style.top=aPos[i].top+'px';
+						   aLi[i].style.WebkitTransform="scale(2)"; 
+						   aLi[i].style.MozTransform="scale(2)"; 
+						   aLi[i].style.transform="scale(2)";
+						 }
+						for(var i=0;i<aLi.length;i++){
+							aLi[i].style.position='absolute';
+							aLi[i].style.margin='0';
+						 }	 
+						 setTimeout(show,100);
+						 var arr=["熟练使用HTML、HTML5，能够书写语义合理，结构清晰，易维护的HTML结构","熟练使用CSS、CSS3，能够还原视觉设计，并兼容业界承认的主流浏览器","熟练使用原生JS,能够自主编写JS实现相关的前台功能","熟练使用jQuery等相关类库的使用","熟悉AJAX和JSONP的数据交互机制，能够手写AJAX和JSONP获取函数","对面向对象、PHP有一定的了解，便于和后台人员沟通"]
+						 function show(){  								
+								for(var i=0;i<aLi.length;i++)
+								{   	          
+									aLi[i].style.transition=".5s "+(aLi.length-i)*300+"ms";
+									aLi[i].style.WebkitTransform="scale(1)";
+									aLi[i].style.MozTransform="scale(1)";
+									aLi[i].style.transform="scale(1)";
+									aLi[i].style.opacity=1;
+									aLi[i].innerHTML="<p>"+arr[i]+"</p>";
+								}
+						 }
+			  }
+				function rnd(n,m){
+					return parseInt(Math.random()*(m-n) + n);
+				}
+				var oJie = document.getElementById("jieshao");
+				var oC = document.getElementById("ca");
+				var gd = oC.getContext("2d");
+				          
+				var winW = oJie.offsetWidth;
+				var winH = oJie.offsetHeight;
+				
+				oC.width = winW;
+				oC.height = winH;
+		
+				//个数
+				var N = 5;
+
+				var aPoint = [];
+				
+				//初始化坐标点
+				for(var i = 0; i < N; i++){
+					aPoint[i] = {
+						w:1,
+						h:1,
+						x:rnd(0,winW),
+						y:rnd(0,winH),
+						speedX:rnd(-7,7),
+						speedY:rnd(-7,7)
+					};
+				}
+				
+				
+				//
+				var oldPoint = [[5],[10]];
+				
+				//动起来
+				setInterval(function(){
+					
+					//清除画布
+					gd.clearRect(0,0,oC.width,oC.height);
+					
+					for(var i = 0; i < N; i++){
+						drawPoint(aPoint[i]);
+						
+						
+						if(aPoint[i].x < 0){
+							aPoint[i].x = 0;
+							aPoint[i].speedX *= -1;
+						}
+						if(aPoint[i].x > winW){
+							aPoint[i].x = winW;
+							aPoint[i].speedX *= -1;
+						}
+						if(aPoint[i].y < 0){
+							aPoint[i].y = 0;
+							aPoint[i].speedY *= -1;
+						}
+						if(aPoint[i].y > winH){
+							aPoint[i].y = winH;
+							aPoint[i].speedY *= -1;
+						}
+						
+					
+						aPoint[i].x += aPoint[i].speedX;
+						aPoint[i].y += aPoint[i].speedY;
+					
+					}
+					
+					
+					//连接
+					gd.beginPath();
+					gd.moveTo(aPoint[0].x,aPoint[0].y);
+					for(var i = 1; i < N; i++){
+						gd.lineTo(aPoint[i].x,aPoint[i].y);
+						
+					}
+					gd.strokeStyle = "#fff";
+					gd.closePath();
+					gd.stroke(); 
+					
+					//尾巴 影子
+					var arr = [];//存当前的坐标路径
+					
+					for(var i = 0; i < N; i++){
+						arr.push({x:aPoint[i].x,y:aPoint[i].y});
+					}
+					
+					oldPoint.push(arr);
+			
+					while(oldPoint.length > 10){
+						oldPoint.shift();
+					}
+					 
+					//重新绘制影子
+					for(var i = 0; i < oldPoint.length; i++){
+						
+						gd.beginPath();
+						gd.moveTo(oldPoint[i][0].x,oldPoint[i][0].y);
+						for(var j = 0; j < oldPoint[i].length; j++){
+							gd.lineTo(oldPoint[i][j].x,oldPoint[i][j].y);
+							
+						}
+						var opacity = i/(oldPoint.length - 1);
+						gd.strokeStyle = "rgba(255,0,0,"+opacity+")" 
+						gd.closePath();
+						gd.stroke();
+					}
+				},16);
+				
+				
+				function drawPoint(p){
+					gd.fillStyle = "#fff";
+					gd.fillRect(p.x,p.y,p.w,p.h);
+					gd.strokeRect(p.x,p.y,p.w,p.h);
+				} 
+
 		   }
         </script>
         

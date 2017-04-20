@@ -34,13 +34,14 @@
 
 	function startLoading() {
 		// simulate loading something..
+		var oScale=document.getElementById('scale');
 		var simulationFn = function(instance) {
 			var progress = 0,
 				interval = setInterval( function() {
-					progress = Math.min( progress + Math.random() * 0.1, 1 );
-
+					progress = Math.min( progress + Math.random() * 0.04, 1 );
+                    oScale.innerHTML=parseInt(progress*100)+'%';
 					instance.setProgress( progress );
-
+                    
 					// reached the end
 					if( progress === 1 ) {
 						classie.remove( container, 'loading' );
@@ -144,10 +145,47 @@ function circle(id){
 			oLi[i].style.display = "block";
 			var arg = 360/oLi.length*i;
 			moveCircle(oLi[i],150,arg,{time:500});
+			oLi[i].rotate=arg;
+		}
+		var k=1;
+	    var timer1=setTimeout(rotateY,1500);
+		function rotateY(){
+				console.log(k)
+				for(var i=0;i<oLi.length;i++){
+					(function(index){
+						moveRotate(oLi[index],(k+index)*360/8,{fn:function(){
+							k++;
+							rotateY();
+						}});
+					})(i);	
+				}
 		}
 
 }
-
+function moveRotate(obj,iTarget,opational){
+	var start=obj.rotate;
+	var dis=iTarget-start;
+	var time=1500;
+	var count=Math.round(time/30);
+	var n=0;
+	clearInterval(obj.timer);
+	obj.timer=setInterval(function(){
+		n++;
+		var cur=start+dis/count*n;
+		setPos(obj,cur);
+		obj.rotate=cur;
+		if(n==count){
+			clearInterval(obj.timer);
+			opational.fn && opational.fn();
+		}
+	},30);
+}
+function setPos(obj,n){
+	var x=Math.sin(argToRad(n))*150;
+	var y=Math.cos(argToRad(n))*150;
+	obj.style.left=x+150+'px';
+	obj.style.top=115-y+'px';
+}
 function moveCircle(obj,r,arg,optional){
 	var optional = optional || {};
 	optional.time = optional.time || 300;
@@ -160,7 +198,6 @@ function moveCircle(obj,r,arg,optional){
 	
 	start.left = parseFloat(getStyle(obj,"left"));
 	start.top = parseFloat(getStyle(obj,"top"));
-	console.log(getStyle(obj,"left"),getStyle(obj,"top"));
 	var radian = argToRad(arg);
 
 	clearInterval(obj.timer);

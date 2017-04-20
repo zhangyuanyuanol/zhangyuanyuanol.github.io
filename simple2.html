@@ -10,9 +10,12 @@
 		<link rel="stylesheet" type="text/css" href="css/demo-3.css" />
 		<style>
 			.grid-wrap {
-				max-width: 990px;
+				max-width: 1090px;
 			}
-			.grid figure,
+			.grid figure{
+				width: 150px;
+				height: 150px;
+			}
 			.grid .placeholder {
 				width: 150px;
 				height: 150px;
@@ -27,78 +30,125 @@
 		<div class="container">
 			<section class="grid3d horizontal" id="grid3d">
 				<div class="grid-wrap">
-					<div class="grid">
-						<figure id="first"><img src="img/1.jpg" /><span>JS</span></figure>
-						<figure id="second"><img src="img/2.jpg" /><span>CSS</span></figure>
-						<figure id="third"><img src="img/3.jpg" /><span>C3</span></figure>
-						<figure id="four"><img src="img/4.jpg" /><span>HTML5</span></figure>
+					<div class="grid" id="skillControll">
+
+                                <figure id="first"><img src="img/img1.png" /><span></span></figure>
+                                <figure id="second"><img src="img/img2.png" /><span></span></figure>
+                                <figure id="third"><img src="img/img3.png" /><span></span></figure>
+                                <figure id="four"><img src="img/img4.png" /><span></span></figure>
 					</div>
 				</div><!-- /grid-wrap -->
 				<div class="content">
 					<div class="itemList">
 						<p class="dummy-text">点击选择一项查看</p>
 						<div class="dummy-img">
-                           <ul id="amul">
-                              <li class="titles">旋转魔方</li>
-                              <li class="titles">倾斜跷跷板</li>
-                              <li class="titles">苹果Deck</li>
-                              <li class="titles">跑马灯轮播</li>
-                            </ul>
+                               <iframe src="lagou1.html" scrolling="no" width="850px" height="500px" frameborder="no" id="iframek1"></iframe>
                         </div>
-                        <div id="details" style="opacity: 0;">
-				              <input type="button" value="×" id="conclose">
-<!--				              <iframe src="littles/cube.html" id="iframe"></iframe>
--->			            </div>
+                        <div class="details" id="details1" style="opacity: 0;">
+				              <input type="button" value="×" class="conclose" id="conclose1">
+				              <iframe class="iframe" id="iframe1" scrolling="no" width="1000px" height="600px" frameborder="no"></iframe>
+			            </div>
 					</div>
-					<div>
+					<div class="itemList">
 						<p class="dummy-text">点击选择一项查看</p>
-						<div class="dummy-img"></div>
+						<div class="dummy-img">
+                               <iframe src="lagou2.html" scrolling="no" width="850px" height="500px" frameborder="no" id="iframek2"></iframe>
+                        </div>
+                        <div class="details" id="details2" style="opacity: 0;">
+				              <input type="button" value="×" class="conclose" id="conclose2">
+				              <iframe class="iframe" id="iframe2" scrolling="no" width="1000px" height="600px" frameborder="no"></iframe>
+			            </div>
 					</div>
-					<div>
+					<div class="itemList">
 						<p class="dummy-text">点击选择一项查看</p>
-						<div class="dummy-img"></div>
+						<div class="dummy-img">
+                              <iframe src="lagou3.html" scrolling="no" width="850px" height="500px" frameborder="no" id="iframek3"></iframe>
+                        </div>
+                        <div class="details" id="details3" style="opacity: 0;">
+				              <input type="button" value="×" class="conclose" id="conclose3">
+				              <iframe class="iframe" id="iframe3" scrolling="no" width="1000px" height="600px" frameborder="no"></iframe>
+			            </div>
 					</div>
-					<div>
+					<div class="itemList">
 						<p class="dummy-text">点击选择一项查看</p>
-						<div class="dummy-img"></div>
+						<div class="dummy-img">
+                               <iframe src="lagou4.html" scrolling="no" width="850px" height="500px" frameborder="no" id="iframek4"></iframe>
+                        </div>
+                        <div class="details" id="details4" style="opacity: 0;">
+				              <input type="button" value="×" class="conclose" id="conclose4">
+				              <iframe class="iframe" id="iframe4" scrolling="no" width="1000px" height="600px" frameborder="no"></iframe>
+			            </div>
 					</div>
 					<span class="loading1"></span>
 					<span class="icon1 close-content" id="icon1"></span>
 				</div>
 			</section>
+            <div id="qipao"><img src="img/qipao.png"></div>
 		</div><!-- /container -->
     </div>
         <script src="js/classie.js"></script>
-        <script src="js/cookie.js"></script>
 		<script src="js/grid3d.js"></script>
+        <script src="js/move.js"></script>
+        <script src="js/moveItem.js"></script>
+        
 		<script>
-			new grid3D( document.getElementById( 'grid3d' ) );
+
+		new grid3D( document.getElementById( 'grid3d' ) );
+		    moveItem();
+			var oFrame1=document.getElementById('iframe1');
+			var oFrame2=document.getElementById('iframe2');
+			var oFrame4=document.getElementById('iframe4');
+			var oDetail1=document.getElementById('details1');
+			var oDetail2=document.getElementById('details2');
+			var oDetail4=document.getElementById('details4');
+				function detOpen(index){
+						oDetail1.style.transform = "translateZ(0px) rotateY(0deg)";
+						oDetail1.style.opacity=1;
+						oFrame1.src="sample"+(index+1)+".html";
+				};
+				function detOpen2(index){
+						oDetail2.style.transform = "translateZ(0px) rotateY(0deg)";
+						oDetail2.style.opacity=1;
+						oFrame2.src="sh"+(index+1)+".html";
+				};
+				function detOpen4(index){
+						oDetail4.style.transform = "translateZ(0px) rotateY(0deg)";
+						oDetail4.style.opacity=1;
+						oFrame4.src="cv"+(index+1)+".html";
+				};
+window.onload=function(){
 	
-			window.onload=function(){
+	            //var oAmul = document.getElementById("amul");	
+	           // var aLi = oAmul.children;
+	
                 var oIcon1=document.getElementById('icon1');
 				var oGrid=document.getElementsByClassName('grid')[0];
-				var oAmul=document.getElementById('amul');
-				var aLi=oAmul.children;
-				var oDetail=document.getElementById('details');
-				var oConclose=document.getElementById('conclose');
+				var oConclose1=document.getElementById('conclose1');
+				var oConclose2=document.getElementById('conclose2');
+				var oConclose4=document.getElementById('conclose4');
 				//for(var i=0;i<aLi.length;i++){
-					aLi[0].onclick=function(){
-						oDetail.style.transform = "translateZ(0px) rotateY(0deg)";
-						oDetail.style.opacity=1;
-					}
+					//aLi[0].onclick=function(){
+						//oDetail.style.transform = "translateZ(0px) rotateY(0deg)";
+						//oDetail.style.opacity=1;
+					//}
 				//}
-				oConclose.onclick=function(){
-						oDetail.style.transform = "translateZ(900px) rotateY(-50deg)";
-						oDetail.style.opacity=0;
-				}
-				oGrid.onclick=function(){
-						parent.window.parHide();
-				}
-				oIcon1.onclick=function(){
-					   parent.window.parShow();
-				}
-				
-			}
+				oConclose1.onclick=function(){
+						oDetail1.style.transform = "translateZ(900px) rotateY(-50deg)";
+						oDetail1.style.opacity=0;
+						oFrame1.src="";
+				}	
+				oConclose2.onclick=function(){
+						oDetail2.style.transform = "translateZ(900px) rotateY(-50deg)";
+						oDetail2.style.opacity=0;
+						oFrame2.src="";
+				}	
+				oConclose4.onclick=function(){
+						oDetail4.style.transform = "translateZ(900px) rotateY(-50deg)";
+						oDetail4.style.opacity=0;
+						oFrame4.src="";
+				}	
+}
+
 		</script>
 	</body>
 </html>

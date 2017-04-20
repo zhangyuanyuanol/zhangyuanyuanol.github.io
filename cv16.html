@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com" />
+<meta name="copyright" content="智能社 - zhinengshe.com" />
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+
+*{margin:0;padding:0;list-style:none;}
+body{ background:pink;}
+#ul1{ position:relative;width:480px; height:260px; margin:200px auto;}
+#ul1 li{ position:absolute;left:0;top:0;width:480px; height:260px; display:none;transform: perspective(800px) rotateY(0deg); opacity:0;
+	transition:1s all ease;
+}
+
+#ul1 li.l2{ display:block; transform: perspective(800px) translateX(-300px) rotateY(45deg); z-index:1; opacity:0.1;}
+#ul1 li.l1{ display:block; transform: perspective(800px) translateX(-200px) rotateY(45deg); z-index:2; opacity:1;}
+#ul1 li.cur{ display:block; z-index:5;opacity:1;}
+#ul1 li.r1{display:block; transform: perspective(800px) translateX(200px) rotateY(-45deg);z-index:2;opacity:1;}
+#ul1 li.r2{display:block; transform: perspective(800px) translateX(300px) rotateY(-45deg);z-index:1; opacity:0.1;}
+
+</style>
+<script>
+
+window.onload = function(){
+	
+	var oPrev = document.getElementById("prev");
+	var oNext = document.getElementById("next");
+	var oUl = document.getElementById("ul1");
+	var aLi = oUl.children;
+	
+	var bReady = true;
+	
+	var aClass = [];
+	for(var i = 0; i < aLi.length; i++){
+		aClass.push(aLi[i].className);
+	}
+	
+	oPrev.onclick = function(){
+		if(!bReady) return ;
+		bReady = false;
+		aClass.push(aClass.shift());
+		tab();
+	};
+	
+	oNext.onclick = function(){
+		if(!bReady) return ;
+		bReady = false;
+		
+		aClass.unshift(aClass.pop());
+		
+		tab();
+	};
+	
+	function tab(){
+		
+		for(var i = 0; i < aLi.length; i++){
+			aLi[i].className = aClass[i];
+		}
+		
+		var oCur = document.querySelector(".cur");
+		
+		oCur.addEventListener("transitionend",function(){
+			 bReady = true;
+		},false);	
+	}
+		
+};
+
+</script>
+</head>
+
+<body>
+<input id="prev" type="button" value="上一个" />
+<input id="next" type="button" value="下一个" />
+<ul id="ul1">
+	<li class="l2"><img src="img/cv16/1.jpg"/></li>
+	<li class="l1"><img src="img/cv16/2.jpg"/></li>
+	<li class="cur"><img src="img/cv16/3.jpg"/></li>
+	<li class="r1"><img src="img/cv16/4.jpg"/></li>
+	<li class="r2"><img src="img/cv16/5.jpg"/></li>
+	<li><img src="img/cv16/6.jpg"/></li>
+	<li><img src="img/cv16/7.jpg"/></li>
+	<li><img src="img/cv16/8.jpg"/></li>
+	<li><img src="img/cv16/9.jpg"/></li>
+	<li><img src="img/cv16/10.jpg"/></li>
+	<li><img src="img/cv16/11.jpg"/></li>
+	<li><img src="img/cv16/12.jpg"/></li>
+</ul>
+
+</body>
+</html>
