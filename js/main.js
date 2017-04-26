@@ -38,7 +38,7 @@
 		var simulationFn = function(instance) {
 			var progress = 0,
 				interval = setInterval( function() {
-					progress = Math.min( progress + Math.random() * 0.04, 1 );
+					progress = Math.min( progress + Math.random() * 0.01, 1 );
                     oScale.innerHTML=parseInt(progress*100)+'%';
 					instance.setProgress( progress );
                     
