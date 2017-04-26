@@ -164,6 +164,7 @@
               </div>
         </div>
         </div>
+        <script src="js/domReady.js"></script>
 		<script src="js/classie.js"></script>
 		<script src="js/pathLoader.js"></script>
 		<script src="js/main.js"></script>
@@ -179,7 +180,7 @@
 			   }
         </script>
         <script>
-		   window.onload=function(){          
+		   $(function(){         
 			   var oHeader=document.getElementById('div1');
 			   var oDemo=getByClass(document,'demo')[0];
 			   var aBtn=getByClass(document,'nav_btn');
@@ -444,7 +445,7 @@
 					gd.strokeRect(p.x,p.y,p.w,p.h);
 				} 
 
-		   }
+		   });
         </script>
         
 	</body>
