@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8" />
+	<title>主题出游-活动详情</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta name="format-detection" content="telephone=no" />
+	<script>/* Android 2.3 xxx */;(function () { document.documentElement.scrollTop }());</script>
+	<link type="text/css" rel="stylesheet" href="css/normalize.css" />
+	<link type="text/css" rel="stylesheet" href="css/flexbox.css" />
+	<link type="text/css" rel="stylesheet" href="css/common.css" />
+	<link type="text/css" rel="stylesheet" href="css/layout.css" />
+	<script type="text/javascript" src="js/zepto.min.js"></script>
+</head>
+<body>
+	
+	<!-- //主题出游-活动详情-->
+	<div class="sec_detail_activity fl">
+		<div class="rollimg"><img src="images/placeholder/trip-listimg-01.jpg" /></div>
+		<div class="main">
+			<div class="detail">
+				<h2 class="title">【8月19日】十渡 约北语妹子，泡北交帅哥</h2>
+				<div class="row">
+					<p><b>【主题特色】</b></p>
+					<p>1、本活动仅限北语女生和北交男生参与，上车前检查学生证；</p>
+					<p>2、本活动男女参与比例为1:1。报名截止时，多余的男/女生将自动退款，所以早报名不会有被劝退的危险哦；</p>
+					<p>3、还有更多特色好玩活动。</p>
+				</div>
+				<div class="row">
+					<p><b>【活动行程】</b></p>
+					<p>7:00    北交大南门集合，7点15准时出发</p>
+					<p>7:30    北语北门上车    7点45准时出发</p>
+				</div>
+				<div class="row">
+					<p><b>【活动详情】</b></p>
+					<p>水电费那是肯定能发生的</p>
+					<p>是对方的接口是否你开始</p>
+				</div>
+				<div class="row">
+					<p><b>【温馨提醒】</b></p>
+					<p>水电费那是肯定能发生的</p>
+					<p>是对方的接口是否你开始</p>
+				</div>
+				<div class="row">
+					<p><b>【费用包含】</b></p>
+					<p>费用仅包含来回路费</p>
+					<p>不含：门票食物。</p>
+				</div>
+			</div>
+			<div class="ftbar">
+				<div class="total fl">
+					<p><b class="num c--ef0707">￥2000.00</b></p>
+				</div>
+				<div class="btn fr">
+					<a class="btn-send" id="js-signNow" href="javascript:;">立即报名</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- //立即报名弹窗-->
+	<div class="s_filter_mask"></div>
+	<div class="s_filter_box">
+		<div class="filter_head">
+			<span class="qu_btn_cancel"><a></a></span>
+		</div>
+		<div class="filter_cont fl">
+			<ul>
+				<li class="chooseNum">
+					<div class="lt fl">
+						<em style="color:#666;font-size:0.875rem;">数量：</em>
+						<div class="mem-amount">
+							<input class="ipt-num" type="text" value="1" maxlength="4" onblur="$.mem.check(this);" />
+							<a class="btn-dec" href="javascript:;" onclick="$.mem.set(-1, this);">-</a>
+							<a class="btn-inc" href="javascript:;" onclick="$.mem.set(+1, this);">＋</a>
+						</div>
+					</div>
+					<div class="rt fr">￥45.00</div>
+				</li>
+				<li>
+					<input class="ipt-text" type="text" name="username" placeholder="您的姓名" />
+				</li>
+				<li>
+					<input class="ipt-text" type="text" name="sex" placeholder="性别" />
+				</li>
+				<li>
+					<input class="ipt-text" type="tel" name="tel" placeholder="手机号" />
+				</li>
+			</ul>
+		</div>
+		<div class="js-btn-signNow fl"><a>立即报名</a></div>
+	</div>
+	
+	<!-- //支付失败弹窗-->
+	<div class="err_mask"></div>
+	<div class="pop_tips js-popTips">
+		<a class="close"></a>
+		<div class="cont"><i></i>支付失败</div>
+		<div class="ft">
+			<a href="javascript:;">刷新</a>
+			<a href="javascript:;">重新支付</a>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		$(function(){
+			/*立即报名弹窗*/
+			$("#js-signNow").on("click", function(){
+				$(".s_filter_mask").addClass("on");
+				$(".s_filter_box").animate({"opacity":1, "bottom":0}, 200);
+			});
+			
+			/*取消操作*/
+			$(".qu_btn_cancel,.s_filter_mask").on("click", function(){
+				$(".s_filter_mask").removeClass("on");
+				$(".s_filter_box").animate({"opacity":0, "bottom":"-100%"}, 200);
+			});
+			
+			/*立即报名*/
+			$(".js-btn-signNow").on("click", function(){
+				//关闭立即报名弹窗
+				$(".qu_btn_cancel").trigger("click");
+				
+				$(".js-popTips").fadeIn(200);
+				$(".err_mask").fadeIn(200);
+			});
+			$(".js-popTips .close").on("click", function(){
+				$(".js-popTips").fadeOut(200);
+				$(".err_mask").fadeOut(200);
+			});
+		});
+		
+		$(function () {
+			/** 出游人数 */
+			$.mem = {
+				set: function(code, obj){
+					var ipt = $(obj).siblings("input");
+					var memNums = parseInt($.trim(ipt.val()));
+					switch (code) {
+					case 1: {
+							memNums++;
+						}
+						break;
+					case  - 1: {
+							memNums--;
+						}
+						break;
+					}
+					ipt.val(memNums);
+					$.mem.check(ipt);
+				},
+				check: function(obj){
+					var o = $(obj);
+					//数量小于0
+					var memNums = parseInt($.trim(o.val()));
+					if (memNums <= 0) {
+						o.val(1);
+						return;
+					}
+
+					//判断数量是否是数字
+					var regExp = /^[1-9]*[1-9][0-9]*$/;
+					if (isNaN(memNums) || !regExp.test($.trim(o.val()))) {
+						o.val(1);
+						return;
+					}
+
+					//数量大于库存（假定库存9999）
+					//var storeNums = parseInt($.trim($('#data_storeNums').text()));
+					var storeNums = 9999;
+					if (memNums >= storeNums) {
+						o.val(storeNums);
+						return;
+					}
+				}
+			};
+		});
+	</script>
+
+</body>
+</html>
